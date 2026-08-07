@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Isabela · Professora particular e psicopedagoga em Belo Horizonte</title>
+<meta name="description" content="Aulas particulares, reforço escolar e atendimento psicopedagógico em Belo Horizonte. Mestre em Estudos Linguísticos pela UFMG e especialista em Psicopedagogia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F8F6;
+  --ink:#14181A;
+  --mute:#5F6A64;
+  --g1:#16A34A;
+  --g2:#0D9488;
+  --g3:#0369A1;
+  --disp:'Inter Tight',system-ui,sans-serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --pad:clamp(1.25rem,5vw,5rem);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:clamp(1rem,1.05vw,1.0625rem);line-height:1.6;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img,video{display:block;max-width:100%}
+.wrap{padding-left:var(--pad);padding-right:var(--pad);max-width:1500px;margin:0 auto}
+.grad{background:linear-gradient(96deg,var(--g1),var(--g2) 46%,var(--g3));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ——— nav ——— */
+nav{
+  position:fixed;top:1rem;left:0;right:0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding-left:var(--pad);padding-right:var(--pad);
+}
+.logo{font-family:var(--disp);font-weight:600;font-size:1.15rem;letter-spacing:-.03em}
+.logo b{font-weight:400;color:var(--mute)}
+.pill-nav{
+  display:flex;gap:.35rem;padding:.4rem;border-radius:99px;
+  background:rgba(255,255,255,.62);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  box-shadow:0 1px 3px rgba(20,24,26,.06),0 8px 30px rgba(20,24,26,.05);
+}
+.pill-nav a{
+  padding:.55rem 1.05rem;border-radius:99px;font-size:.78rem;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--mute);transition:background .25s,color .25s;
+}
+.pill-nav a:hover{background:rgba(20,24,26,.06);color:var(--ink)}
+.nav-cta{
+  padding:.7rem 1.3rem;border-radius:99px;background:var(--ink);color:#fff;
+  font-size:.78rem;font-weight:500;letter-spacing:.02em;white-space:nowrap;
+  transition:transform .25s cubic-bezier(.2,.8,.3,1),background .25s;
+}
+.nav-cta:hover{transform:translateY(-2px);background:var(--g1)}
+
+/* ——— formas flutuantes ——— */
+.palco{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.disco{
+  position:absolute;border-radius:50%;
+  background:conic-gradient(from 200deg,#fff,#ccd7d0,#fff,#aebbb3,#fdfefd,#c2cfc7,#fff);
+  box-shadow:0 34px 70px rgba(18,48,34,.20),0 4px 12px rgba(18,48,34,.08),inset 0 1px 2px rgba(255,255,255,.95);
+  will-change:transform;
+}
+.disco.verde{background:conic-gradient(from 150deg,#d8fbec,#5fcfa8,#eafff8,#39b98c,#d8fbec)}
+.disco.azul{background:conic-gradient(from 300deg,#dcecfd,#7db2e4,#eef6ff,#5b9ada,#dcecfd)}
+.disco.escuro{background:conic-gradient(from 40deg,#9fb3a9,#5d7a6c,#b6c7be,#476355,#9fb3a9);opacity:.85}
+
+/* ——— hero ——— */
+.hero{
+  position:relative;min-height:100svh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding-top:8rem;padding-bottom:4rem;
+}
+.hero > *{position:relative;z-index:2}
+.hero > .palco{position:absolute;z-index:0}
+.hero::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(48% 42% at 22% 28%,rgba(52,211,153,.20),transparent 70%),
+    radial-gradient(44% 40% at 80% 62%,rgba(56,189,248,.18),transparent 72%),
+    radial-gradient(40% 36% at 62% 12%,rgba(163,230,53,.14),transparent 70%);
+  filter:blur(10px);
+}
+h1{
+  font-family:var(--disp);font-weight:500;
+  font-size:clamp(2.6rem,7.4vw,6.6rem);line-height:.98;letter-spacing:-.045em;
+  max-width:16ch;
+}
+.hero p.sub{
+  margin-top:clamp(1.25rem,2.2vw,1.9rem);color:var(--mute);
+  font-size:clamp(1rem,1.3vw,1.2rem);max-width:44ch;line-height:1.55;
+}
+.acoes{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:clamp(1.75rem,3vw,2.5rem)}
+.btn{
+  display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.6rem;border-radius:99px;
+  font-size:.9rem;font-weight:500;transition:transform .25s cubic-bezier(.2,.8,.3,1),background .25s,box-shadow .25s;
+}
+.btn svg{width:1.05rem;height:1.05rem;flex:none}
+.btn-escuro{background:var(--ink);color:#fff}
+.btn-escuro:hover{transform:translateY(-3px);background:var(--g1);box-shadow:0 12px 28px rgba(22,163,74,.28)}
+.btn-claro{background:rgba(255,255,255,.8);color:var(--ink);box-shadow:0 1px 3px rgba(20,24,26,.07),0 8px 26px rgba(20,24,26,.05)}
+.btn-claro:hover{transform:translateY(-3px);background:#fff}
+
+.stats{
+  position:relative;z-index:2;display:flex;flex-wrap:wrap;justify-content:center;
+  gap:clamp(1.5rem,4vw,4rem);margin-top:clamp(3rem,6vw,5rem);
+  font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);
+}
+.stats b{color:var(--ink);font-weight:600}
+
+/* ——— seções ——— */
+section{padding-top:clamp(4.5rem,8vw,8rem);padding-bottom:clamp(4.5rem,8vw,8rem)}
+h2{
+  font-family:var(--disp);font-weight:500;
+  font-size:clamp(2rem,4.6vw,4rem);line-height:1.02;letter-spacing:-.04em;max-width:18ch;
+}
+.centro{text-align:center;margin-left:auto;margin-right:auto}
+.intro{color:var(--mute);font-size:clamp(1rem,1.2vw,1.15rem);max-width:52ch;margin-top:1.25rem;line-height:1.55}
+
+/* ——— cards ——— */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.9rem,1.4vw,1.35rem);margin-top:clamp(2.5rem,5vw,4rem)}
+.card{
+  position:relative;overflow:hidden;border-radius:1.75rem;
+  min-height:clamp(20rem,32vw,29rem);padding:clamp(1.5rem,2.4vw,2.4rem);
+  display:flex;flex-direction:column;justify-content:space-between;color:#fff;
+  transition:transform .45s cubic-bezier(.2,.8,.3,1),box-shadow .45s;
+}
+.card:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(20,40,30,.22)}
+.card::before{
+  content:'';position:absolute;inset:0;z-index:0;transition:transform .8s cubic-bezier(.2,.8,.3,1);
+}
+.card:hover::before{transform:scale(1.06)}
+.c1::before{background:radial-gradient(120% 110% at 18% 8%,#4ADE80 0%,#16A34A 42%,#064E3B 100%)}
+.c2::before{background:radial-gradient(120% 110% at 82% 12%,#5EEAD4 0%,#0D9488 44%,#0F3D3A 100%)}
+.c3::before{background:radial-gradient(125% 115% at 25% 90%,#38BDF8 0%,#0369A1 45%,#082F49 100%)}
+.c4::before{background:radial-gradient(120% 110% at 78% 85%,#FDBA74 0%,#C2410C 46%,#3B1206 100%)}
+.card > *{position:relative;z-index:1}
+.card-topo{display:flex;align-items:center;gap:.6rem;font-size:.8rem;letter-spacing:.05em;opacity:.9}
+.card-topo i{width:.5rem;height:.5rem;border-radius:50%;border:1.5px solid currentColor;display:block}
+.card h3{font-family:var(--disp);font-weight:500;font-size:clamp(1.9rem,3.4vw,3rem);letter-spacing:-.04em;line-height:1}
+.card p{margin-top:.7rem;max-width:30ch;font-size:.95rem;line-height:1.5;opacity:.9}
+.tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.4rem}
+.tags span{
+  padding:.4rem .85rem;border-radius:99px;font-size:.75rem;
+  background:rgba(255,255,255,.18);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.22);
+}
+
+/* ——— faixa de vídeo ——— */
+.faixa{background:#0A0C0B;padding:clamp(2.5rem,5vw,4.5rem) 0;overflow:hidden}
+.faixa-grid{
+  display:grid;grid-template-columns:1fr 1.28fr 1fr;gap:clamp(.7rem,1.2vw,1.1rem);
+  align-items:center;padding-left:var(--pad);padding-right:var(--pad);max-width:1500px;margin:0 auto;
+}
+.painel{border-radius:1.25rem;overflow:hidden;background:#111;aspect-ratio:3/4}
+.painel.alto{aspect-ratio:3/4.35}
+.painel video{width:100%;height:100%;object-fit:cover}
+.faixa-txt{text-align:center;color:#fff;padding-top:clamp(2rem,4vw,3rem);padding-left:var(--pad);padding-right:var(--pad)}
+.faixa-txt h2{margin:0 auto;max-width:20ch}
+.faixa-txt p{color:rgba(255,255,255,.62);max-width:48ch;margin:1.1rem auto 0}
+
+/* ——— sobre ——— */
+.sobre{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+.retrato{
+  aspect-ratio:4/5;border-radius:1.75rem;position:relative;overflow:hidden;
+  background:radial-gradient(130% 110% at 20% 10%,#E9F7F0,#D3E4DB 55%,#BDD2C7);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:inset 0 0 0 1px rgba(20,60,40,.07);
+}
+.retrato span{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);text-align:center;line-height:2}
+.sobre-txt p{color:var(--mute);max-width:54ch;font-size:clamp(1rem,1.15vw,1.1rem)}
+.sobre-txt p + p{margin-top:1.15rem}
+.sobre-txt p strong{color:var(--ink);font-weight:500}
+
+/* ——— formação ——— */
+.formacao{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:clamp(2rem,4vw,3rem);justify-content:center}
+.formacao div{
+  flex:1 1 15rem;max-width:19rem;
+  padding:1.6rem 1.8rem;border-radius:1.5rem;background:#fff;
+  box-shadow:0 1px 3px rgba(20,24,26,.06),0 10px 30px rgba(20,24,26,.05);
+  transition:transform .3s cubic-bezier(.2,.8,.3,1);
+}
+.formacao div:hover{transform:translateY(-4px)}
+.formacao strong{display:block;font-family:var(--disp);font-weight:500;font-size:clamp(1.15rem,1.5vw,1.35rem);letter-spacing:-.025em;line-height:1.15}
+.formacao em{display:block;margin-top:.6rem;font-style:normal;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.formacao .ufmg em{color:var(--g1);font-weight:600}
+
+/* ——— onde ——— */
+.onde{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.9rem,1.4vw,1.35rem);margin-top:clamp(2.5rem,4vw,3.5rem)}
+.onde div{
+  padding:clamp(1.75rem,2.6vw,2.6rem);border-radius:1.75rem;background:#fff;
+  box-shadow:0 1px 3px rgba(20,24,26,.06),0 10px 34px rgba(20,24,26,.05);
+}
+.onde h3{font-family:var(--disp);font-weight:500;font-size:clamp(1.4rem,2.2vw,2rem);letter-spacing:-.03em;line-height:1.1}
+.onde p{margin-top:.8rem;color:var(--mute);max-width:34ch}
+
+/* ——— cta ——— */
+.cta{position:relative;text-align:center;overflow:hidden}
+.cta h2{margin:0 auto;max-width:14ch}
+
+/* barra fixa */
+.barra{
+  position:fixed;left:50%;bottom:1.25rem;transform:translate(-50%,150%);z-index:70;
+  display:flex;align-items:center;gap:.9rem;padding:.5rem .5rem .5rem 1.35rem;border-radius:99px;
+  background:rgba(20,24,26,.92);backdrop-filter:blur(14px);color:#fff;
+  box-shadow:0 14px 44px rgba(20,24,26,.3);transition:transform .5s cubic-bezier(.2,.8,.3,1);
+  font-size:.88rem;white-space:nowrap;max-width:calc(100vw - 2rem);
+}
+.barra.on{transform:translate(-50%,0)}
+.barra a{display:inline-flex;align-items:center;gap:.5rem;background:var(--g1);color:#fff;padding:.65rem 1.15rem;border-radius:99px;font-weight:500}
+.barra a svg{width:1rem;height:1rem}
+
+footer{
+  padding:2.5rem var(--pad);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);
+}
+
+/* revelação */
+.rev{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
+.rev.on{opacity:1;transform:none}
+
+@media (max-width:1000px){
+  .pill-nav{display:none}
+  .sobre{grid-template-columns:1fr}
+  .retrato{max-width:22rem}
+}
+@media (max-width:760px){
+  .cards,.onde{grid-template-columns:1fr}
+  .faixa-grid{grid-template-columns:1fr 1fr;gap:.6rem}
+  .painel:nth-child(3){display:none}
+  h1{font-size:clamp(2.5rem,10vw,3.6rem)}
+  .stats{gap:1rem;flex-direction:column}
+  .barra{font-size:.8rem;padding-left:1.1rem;gap:.6rem}
+  .logo b{display:none}
+  .hero .disco{opacity:.4}
+  .hero .disco:nth-of-type(n+5){display:none}
+  .hero::before{opacity:.8}
+  .formacao div{max-width:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .rev{opacity:1;transform:none;transition:none}
+  .disco{display:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Isabela <b>· professora e psicopedagoga</b></div>
+  <div class="pill-nav">
+    <a href="#servicos">Serviços</a>
+    <a href="#sobre">Quem sou</a>
+    <a href="#formacao">Formação</a>
+    <a href="#onde">Onde atendo</a>
+  </div>
+  <a class="nav-cta" href="#contato">Falar no WhatsApp</a>
+</nav>
+
+<header class="hero wrap">
+  <div class="palco" id="palco">
+    <div class="disco" data-d="0.6" style="width:15rem;height:15rem;top:8%;left:-5%"></div>
+    <div class="disco verde" data-d="1.1" style="width:9.5rem;height:9.5rem;top:16%;right:9%"></div>
+    <div class="disco escuro" data-d="0.35" style="width:24rem;height:24rem;bottom:-14%;right:-9%;filter:blur(2px)"></div>
+    <div class="disco azul" data-d="1.5" style="width:7rem;height:7rem;bottom:24%;left:13%"></div>
+    <div class="disco" data-d="0.85" style="width:11.5rem;height:11.5rem;top:54%;left:-3%;filter:blur(1px)"></div>
+    <div class="disco verde" data-d="0.5" style="width:18rem;height:18rem;top:-9%;right:23%;filter:blur(3px);opacity:.8"></div>
+    <div class="disco" data-d="1.25" style="width:5.5rem;height:5.5rem;top:30%;right:1%"></div>
+    <div class="disco escuro" data-d="0.75" style="width:8rem;height:8rem;bottom:4%;left:40%;filter:blur(2px);opacity:.45"></div>
+  </div>
+
+  <h1>Cada aluno trava<br><span class="grad">num lugar diferente</span></h1>
+  <p class="sub">Aulas particulares e atendimento psicopedagógico em Belo Horizonte, do 1º ano do fundamental ao ENEM.</p>
+  <div class="acoes">
+    <a class="btn btn-escuro" href="#contato">Falar no WhatsApp
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H8M17 7v9"/></svg>
+    </a>
+    <a class="btn btn-claro" href="#servicos">Ver o que eu faço
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+  </div>
+  <div class="stats">
+    <span><b>UFMG</b> · graduação e mestrado</span>
+    <span><b>4</b> formações na área</span>
+    <span><b>Nova Suíça</b> · Belo Horizonte</span>
+  </div>
+</header>
+
+<section class="wrap" id="servicos">
+  <h2 class="centro rev">O que eu faço</h2>
+  <p class="intro centro rev">A aula começa antes da matéria. Primeiro a gente descobre onde a dificuldade mora, depois monta o plano.</p>
+
+  <div class="cards">
+    <div class="card c1 rev">
+      <div class="card-topo"><i></i> 1º ao 5º ano</div>
+      <div>
+        <h3>Fundamental 1</h3>
+        <p>Todas as disciplinas, incluindo Inglês. A etapa da alfabetização, da leitura fluente e da base que sustenta tudo que vem depois.</p>
+        <div class="tags"><span>Alfabetização</span><span>Leitura</span><span>Inglês</span><span>Todas as matérias</span></div>
+      </div>
+    </div>
+
+    <div class="card c2 rev">
+      <div class="card-topo"><i></i> 6º ao 9º ano</div>
+      <div>
+        <h3>Fundamental 2</h3>
+        <p>Linguagens e Ciências Humanas, na fase em que a cobrança aumenta e o método de estudo precisa acompanhar.</p>
+        <div class="tags"><span>Português</span><span>Redação</span><span>História</span><span>Geografia</span></div>
+      </div>
+    </div>
+
+    <div class="card c3 rev">
+      <div class="card-topo"><i></i> 1ª à 3ª série</div>
+      <div>
+        <h3>Ensino Médio</h3>
+        <p>Português e Redação com foco no ENEM e nos principais vestibulares do país.</p>
+        <div class="tags"><span>ENEM</span><span>Redação</span><span>Ciências Médicas</span><span>PUC Minas</span><span>FUVEST</span></div>
+      </div>
+    </div>
+
+    <div class="card c4 rev">
+      <div class="card-topo"><i></i> Atendimento individual</div>
+      <div>
+        <h3>Psicopedagogia</h3>
+        <p>Para estudantes com dificuldades de aprendizagem e transtornos do neurodesenvolvimento, com estratégias fundamentadas na Neuroeducação.</p>
+        <div class="tags"><span>TEA</span><span>TDAH</span><span>Dislexia</span><span>Deficiência intelectual</span><span>Neuroeducação</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="faixa">
+  <div class="faixa-grid">
+    <div class="painel rev"><video src="video/loop-1.mp4" autoplay muted loop playsinline></video></div>
+    <div class="painel alto rev"><video src="video/loop-2.mp4" autoplay muted loop playsinline></video></div>
+    <div class="painel rev"><video src="video/loop-3.mp4" autoplay muted loop playsinline></video></div>
+  </div>
+  <div class="faixa-txt">
+    <h2 class="rev">Aprender não é sobre esforço. É sobre caminho.</h2>
+    <p class="rev">Dois alunos com a mesma nota podem estar travados por motivos completamente diferentes. Descobrir qual é o motivo muda tudo que vem depois.</p>
+  </div>
+</div>
+
+<section class="wrap" id="sobre">
+  <div class="sobre">
+    <div class="retrato rev"><span>retrato<br>espaço reservado</span></div>
+    <div class="sobre-txt">
+      <h2 class="rev">A mesma pergunta atravessa todas as minhas aulas</h2>
+      <p class="rev" style="margin-top:1.5rem"><strong>Por que esse aluno, especificamente esse, não está conseguindo?</strong></p>
+      <p class="rev">Sou formada em Letras e em Pedagogia pela UFMG, onde também fiz o mestrado em Estudos Linguísticos. Depois vieram as especializações em Metodologias Ativas e em Psicopedagogia, e foi ali que o meu trabalho mudou de lugar. Deixei de olhar só para o conteúdo que precisava ser ensinado e passei a olhar para o caminho que cada estudante faz até chegar nele.</p>
+      <p class="rev">Antes de repetir a matéria mais devagar, eu procuro entender onde a dificuldade mora, se está na leitura, na organização dos estudos, na confiança ou no jeito como aquele assunto foi apresentado pela primeira vez. Quando isso fica claro, o resto anda.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="formacao">
+  <h2 class="centro rev">Formação</h2>
+  <div class="formacao">
+    <div class="ufmg rev"><strong>Licenciatura em Letras e em Pedagogia</strong><em>UFMG</em></div>
+    <div class="ufmg rev"><strong>Mestrado em Estudos Linguísticos</strong><em>UFMG</em></div>
+    <div class="rev"><strong>Metodologias Ativas para a Educação</strong><em>Especialização</em></div>
+    <div class="rev"><strong>Psicopedagogia</strong><em>Especialização</em></div>
+  </div>
+</section>
+
+<section class="wrap" id="onde">
+  <h2 class="centro rev">Onde acontece</h2>
+  <div class="onde">
+    <div class="rev">
+      <h3>Nova Suíça, Belo Horizonte</h3>
+      <p>Atendimento presencial em sala preparada para o trabalho individual, com o material e a tranquilidade que a aula pede.</p>
+    </div>
+    <div class="rev">
+      <h3>Atendimento domiciliar</h3>
+      <p>Para famílias que preferem receber em casa, mediante consulta de disponibilidade de agenda e valores.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta wrap" id="contato">
+  <div class="palco">
+    <div class="disco verde" data-d="0.7" style="width:13rem;height:13rem;top:8%;left:4%;filter:blur(2px);opacity:.8"></div>
+    <div class="disco azul" data-d="1.2" style="width:8rem;height:8rem;bottom:12%;right:8%"></div>
+  </div>
+  <h2 class="centro rev" style="position:relative;z-index:2">A primeira conversa é sobre o aluno</h2>
+  <p class="intro centro rev" style="position:relative;z-index:2">Me conte o que está acontecendo e a gente vê junto qual é o melhor caminho. Sem compromisso nenhum.</p>
+  <div class="acoes rev" style="position:relative;z-index:2">
+    <a class="btn btn-escuro" href="https://wa.me/5531900000000" target="_blank" rel="noopener">Falar no WhatsApp
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H8M17 7v9"/></svg>
+    </a>
+  </div>
+</section>
+
+<div class="barra" id="barra">
+  Aulas particulares e psicopedagogia em BH
+  <a href="https://wa.me/5531900000000" target="_blank" rel="noopener">Falar agora
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+</div>
+
+<footer>
+  <span>Isabela · Professora particular e psicopedagoga</span>
+  <span>Belo Horizonte, MG</span>
+</footer>
+
+<script>
+const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})
+},{threshold:.14,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rev').forEach((el,i)=>{
+  el.style.transitionDelay=(i%3)*80+'ms';
+  io.observe(el);
+});
+
+if(!reduz){
+  const discos=[...document.querySelectorAll('.disco')].map(el=>({
+    el, d:parseFloat(el.dataset.d||1), r:Math.random()*360, x:0,y:0, tx:0,ty:0
+  }));
+  let my=0, mx=0;
+  addEventListener('pointermove', e=>{
+    mx=(e.clientX/innerWidth-.5)*2; my=(e.clientY/innerHeight-.5)*2;
+  },{passive:true});
+  let sy=0;
+  addEventListener('scroll',()=>{sy=scrollY},{passive:true});
+
+  let t=0;
+  (function laco(){
+    t+=0.006;
+    for(const d of discos){
+      d.tx = mx*26*d.d + Math.sin(t*0.9+d.d*3)*14;
+      d.ty = my*26*d.d + Math.cos(t*0.7+d.d*2)*16 - sy*0.05*d.d;
+      d.x += (d.tx-d.x)*0.06;
+      d.y += (d.ty-d.y)*0.06;
+      d.el.style.transform=`translate3d(${d.x.toFixed(2)}px,${d.y.toFixed(2)}px,0) rotate(${(d.r+t*12*d.d).toFixed(2)}deg)`;
+    }
+    requestAnimationFrame(laco);
+  })();
+}
+
+const barra=document.getElementById('barra');
+addEventListener('scroll',()=>{
+  barra.classList.toggle('on', scrollY>innerHeight*0.85);
+},{passive:true});
+</script>
+</body>
+</html>
