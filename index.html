@@ -10,12 +10,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F7F8F6;
-  --ink:#14181A;
-  --mute:#5F6A64;
-  --g1:#16A34A;
-  --g2:#0D9488;
-  --g3:#0369A1;
+  --bg:#F6F3FC;
+  --surface:#FCFAFF;
+  --ink:#1C1633;
+  --mute:#665E80;
+  --g1:#6D4FC7;
+  --g2:#8B72E0;
+  --g3:#5566C9;
+  --linha:rgba(109,79,199,.15);
+  --sombra1:0 1px 3px rgba(45,30,80,.06);
+  --sombra2:0 12px 34px rgba(45,30,80,.07);
   --disp:'Inter Tight',system-ui,sans-serif;
   --sans:'Inter',system-ui,sans-serif;
   --pad:clamp(1.25rem,5vw,5rem);
@@ -43,13 +47,13 @@ nav{
 .pill-nav{
   display:flex;gap:.35rem;padding:.4rem;border-radius:99px;
   background:rgba(255,255,255,.62);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-  box-shadow:0 1px 3px rgba(20,24,26,.06),0 8px 30px rgba(20,24,26,.05);
+  box-shadow:0 1px 3px rgba(45,30,80,.07),0 8px 30px rgba(45,30,80,.06);
 }
 .pill-nav a{
   padding:.55rem 1.05rem;border-radius:99px;font-size:.78rem;letter-spacing:.04em;
   text-transform:uppercase;color:var(--mute);transition:background .25s,color .25s;
 }
-.pill-nav a:hover{background:rgba(20,24,26,.06);color:var(--ink)}
+.pill-nav a:hover{background:rgba(109,79,199,.09);color:var(--ink)}
 .nav-cta{
   padding:.7rem 1.3rem;border-radius:99px;background:var(--ink);color:#fff;
   font-size:.78rem;font-weight:500;letter-spacing:.02em;white-space:nowrap;
@@ -61,13 +65,13 @@ nav{
 .palco{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
 .disco{
   position:absolute;border-radius:50%;
-  background:conic-gradient(from 200deg,#fff,#ccd7d0,#fff,#aebbb3,#fdfefd,#c2cfc7,#fff);
-  box-shadow:0 34px 70px rgba(18,48,34,.20),0 4px 12px rgba(18,48,34,.08),inset 0 1px 2px rgba(255,255,255,.95);
+  background:conic-gradient(from 200deg,#fff,#DCD4EE,#fff,#C4B9E4,#FDFCFF,#D2C8EA,#fff);
+  box-shadow:0 34px 70px rgba(45,25,90,.18),0 4px 12px rgba(45,25,90,.07),inset 0 1px 2px rgba(255,255,255,.95);
   will-change:transform;
 }
-.disco.verde{background:conic-gradient(from 150deg,#d8fbec,#5fcfa8,#eafff8,#39b98c,#d8fbec)}
-.disco.azul{background:conic-gradient(from 300deg,#dcecfd,#7db2e4,#eef6ff,#5b9ada,#dcecfd)}
-.disco.escuro{background:conic-gradient(from 40deg,#9fb3a9,#5d7a6c,#b6c7be,#476355,#9fb3a9);opacity:.85}
+.disco.lilas{background:conic-gradient(from 150deg,#EFE9FE,#B49BF0,#F7F3FF,#9B7DE8,#EFE9FE)}
+.disco.iris{background:conic-gradient(from 300deg,#E4E8FD,#9AAAEE,#F1F4FF,#7C8FE4,#E4E8FD)}
+.disco.ametista{background:conic-gradient(from 40deg,#B3A5D2,#6E5C99,#C4B8DC,#55438D,#B3A5D2);opacity:.85}
 
 /* ——— hero ——— */
 .hero{
@@ -80,9 +84,9 @@ nav{
 .hero::before{
   content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
   background:
-    radial-gradient(48% 42% at 22% 28%,rgba(52,211,153,.20),transparent 70%),
-    radial-gradient(44% 40% at 80% 62%,rgba(56,189,248,.18),transparent 72%),
-    radial-gradient(40% 36% at 62% 12%,rgba(163,230,53,.14),transparent 70%);
+    radial-gradient(48% 42% at 22% 28%,rgba(155,125,232,.22),transparent 70%),
+    radial-gradient(44% 40% at 80% 62%,rgba(124,143,228,.20),transparent 72%),
+    radial-gradient(40% 36% at 62% 12%,rgba(199,180,250,.22),transparent 70%);
   filter:blur(10px);
 }
 h1{
@@ -97,12 +101,13 @@ h1{
 .acoes{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:clamp(1.75rem,3vw,2.5rem)}
 .btn{
   display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.6rem;border-radius:99px;
-  font-size:.9rem;font-weight:500;transition:transform .25s cubic-bezier(.2,.8,.3,1),background .25s,box-shadow .25s;
+  font-size:.9rem;font-weight:500;border:0;cursor:pointer;font-family:inherit;
+  transition:transform .25s cubic-bezier(.2,.8,.3,1),background .25s,box-shadow .25s;
 }
 .btn svg{width:1.05rem;height:1.05rem;flex:none}
 .btn-escuro{background:var(--ink);color:#fff}
-.btn-escuro:hover{transform:translateY(-3px);background:var(--g1);box-shadow:0 12px 28px rgba(22,163,74,.28)}
-.btn-claro{background:rgba(255,255,255,.8);color:var(--ink);box-shadow:0 1px 3px rgba(20,24,26,.07),0 8px 26px rgba(20,24,26,.05)}
+.btn-escuro:hover{transform:translateY(-3px);background:var(--g1);box-shadow:0 12px 28px rgba(109,79,199,.30)}
+.btn-claro{background:rgba(255,255,255,.8);color:var(--ink);box-shadow:0 1px 3px rgba(45,30,80,.08),0 8px 26px rgba(45,30,80,.06)}
 .btn-claro:hover{transform:translateY(-3px);background:#fff}
 
 .stats{
@@ -129,49 +134,53 @@ h2{
   display:flex;flex-direction:column;justify-content:space-between;color:#fff;
   transition:transform .45s cubic-bezier(.2,.8,.3,1),box-shadow .45s;
 }
-.card:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(20,40,30,.22)}
+.card:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(45,25,90,.24)}
 .card::before{
   content:'';position:absolute;inset:0;z-index:0;transition:transform .8s cubic-bezier(.2,.8,.3,1);
 }
+.card::after{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(24,16,42,.42) 0%,rgba(24,16,42,.10) 30%,rgba(24,16,42,.14) 52%,rgba(20,13,36,.52) 100%);
+}
 .card:hover::before{transform:scale(1.06)}
-.c1::before{background:radial-gradient(120% 110% at 18% 8%,#4ADE80 0%,#16A34A 42%,#064E3B 100%)}
-.c2::before{background:radial-gradient(120% 110% at 82% 12%,#5EEAD4 0%,#0D9488 44%,#0F3D3A 100%)}
-.c3::before{background:radial-gradient(125% 115% at 25% 90%,#38BDF8 0%,#0369A1 45%,#082F49 100%)}
-.c4::before{background:radial-gradient(120% 110% at 78% 85%,#FDBA74 0%,#C2410C 46%,#3B1206 100%)}
+.c1::before{background:radial-gradient(120% 110% at 18% 8%,#A78BF0 0%,#6D4FC7 42%,#33206B 100%)}
+.c2::before{background:radial-gradient(120% 110% at 82% 12%,#8FA3EE 0%,#4F5FC4 44%,#23286B 100%)}
+.c3::before{background:radial-gradient(125% 115% at 25% 90%,#A582DF 0%,#6A3FAE 45%,#2E1659 100%)}
+.c4::before{background:radial-gradient(120% 110% at 78% 85%,#9089C4 0%,#464073 46%,#181430 100%)}
 .card > *{position:relative;z-index:1}
-.card-topo{display:flex;align-items:center;gap:.6rem;font-size:.8rem;letter-spacing:.05em;opacity:.9}
+.card-topo{display:flex;align-items:center;gap:.6rem;font-size:.8rem;letter-spacing:.05em;opacity:.92}
 .card-topo i{width:.5rem;height:.5rem;border-radius:50%;border:1.5px solid currentColor;display:block}
 .card h3{font-family:var(--disp);font-weight:500;font-size:clamp(1.9rem,3.4vw,3rem);letter-spacing:-.04em;line-height:1}
-.card p{margin-top:.7rem;max-width:30ch;font-size:.95rem;line-height:1.5;opacity:.9}
+.card p{margin-top:.7rem;max-width:32ch;font-size:.95rem;line-height:1.5;opacity:.92}
 .tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.4rem}
 .tags span{
   padding:.4rem .85rem;border-radius:99px;font-size:.75rem;
-  background:rgba(255,255,255,.18);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.20);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.26);
 }
 
 /* ——— faixa de vídeo ——— */
-.faixa{background:#0A0C0B;padding:clamp(2.5rem,5vw,4.5rem) 0;overflow:hidden}
+.faixa{background:#191233;padding:clamp(2.5rem,5vw,4.5rem) 0;overflow:hidden}
 .faixa-grid{
   display:grid;grid-template-columns:1fr 1.28fr 1fr;gap:clamp(.7rem,1.2vw,1.1rem);
   align-items:center;padding-left:var(--pad);padding-right:var(--pad);max-width:1500px;margin:0 auto;
 }
-.painel{border-radius:1.25rem;overflow:hidden;background:#111;aspect-ratio:3/4}
+.painel{border-radius:1.25rem;overflow:hidden;background:#221a40;aspect-ratio:3/4}
 .painel.alto{aspect-ratio:3/4.35}
 .painel video{width:100%;height:100%;object-fit:cover}
 .faixa-txt{text-align:center;color:#fff;padding-top:clamp(2rem,4vw,3rem);padding-left:var(--pad);padding-right:var(--pad)}
 .faixa-txt h2{margin:0 auto;max-width:20ch}
-.faixa-txt p{color:rgba(255,255,255,.62);max-width:48ch;margin:1.1rem auto 0}
+.faixa-txt p{color:rgba(255,255,255,.66);max-width:48ch;margin:1.1rem auto 0}
 
 /* ——— sobre ——— */
 .sobre{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,5rem);align-items:center}
 .retrato{
   aspect-ratio:4/5;border-radius:1.75rem;position:relative;overflow:hidden;
-  background:radial-gradient(130% 110% at 20% 10%,#E9F7F0,#D3E4DB 55%,#BDD2C7);
+  background:radial-gradient(130% 110% at 20% 10%,#F0EBFC,#DDD4F2 55%,#C8BCE6);
   display:flex;align-items:center;justify-content:center;
-  box-shadow:inset 0 0 0 1px rgba(20,60,40,.07);
+  box-shadow:inset 0 0 0 1px rgba(80,55,150,.09);
 }
 .retrato span{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);text-align:center;line-height:2}
-.sobre-txt p{color:var(--mute);max-width:54ch;font-size:clamp(1rem,1.15vw,1.1rem)}
+.sobre-txt p{color:var(--mute);max-width:56ch;font-size:clamp(1rem,1.15vw,1.1rem)}
 .sobre-txt p + p{margin-top:1.15rem}
 .sobre-txt p strong{color:var(--ink);font-weight:500}
 
@@ -179,8 +188,8 @@ h2{
 .formacao{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:clamp(2rem,4vw,3rem);justify-content:center}
 .formacao div{
   flex:1 1 15rem;max-width:19rem;
-  padding:1.6rem 1.8rem;border-radius:1.5rem;background:#fff;
-  box-shadow:0 1px 3px rgba(20,24,26,.06),0 10px 30px rgba(20,24,26,.05);
+  padding:1.6rem 1.8rem;border-radius:1.5rem;background:var(--surface);
+  box-shadow:var(--sombra1),var(--sombra2);
   transition:transform .3s cubic-bezier(.2,.8,.3,1);
 }
 .formacao div:hover{transform:translateY(-4px)}
@@ -189,28 +198,126 @@ h2{
 .formacao .ufmg em{color:var(--g1);font-weight:600}
 
 /* ——— onde ——— */
-.onde{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.9rem,1.4vw,1.35rem);margin-top:clamp(2.5rem,4vw,3.5rem)}
-.onde div{
-  padding:clamp(1.75rem,2.6vw,2.6rem);border-radius:1.75rem;background:#fff;
-  box-shadow:0 1px 3px rgba(20,24,26,.06),0 10px 34px rgba(20,24,26,.05);
+.onde{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.9rem,1.4vw,1.35rem);margin-top:clamp(2.5rem,4vw,3.5rem);align-items:stretch}
+.bloco{
+  display:flex;flex-direction:column;
+  padding:clamp(1.75rem,2.6vw,2.6rem);border-radius:1.75rem;background:var(--surface);
+  box-shadow:var(--sombra1),var(--sombra2);
 }
 .onde h3{font-family:var(--disp);font-weight:500;font-size:clamp(1.4rem,2.2vw,2rem);letter-spacing:-.03em;line-height:1.1}
-.onde p{margin-top:.8rem;color:var(--mute);max-width:34ch}
+.onde p{margin-top:.8rem;color:var(--mute);max-width:36ch}
 
-/* ——— cta ——— */
-.cta{position:relative;text-align:center;overflow:hidden}
-.cta h2{margin:0 auto;max-width:14ch}
+/* mapa */
+.mapa-cartao{
+  grid-column:1/-1;
+  position:relative;border-radius:1.75rem;overflow:hidden;background:#E8E2F5;
+  box-shadow:var(--sombra1),var(--sombra2);aspect-ratio:16/5.2;
+}
+.mapa-cartao iframe{
+  width:100%;height:100%;border:0;display:block;
+  filter:saturate(.72) contrast(1.02);
+}
+.mapa-cartao::after{
+  content:'';position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  box-shadow:inset 0 0 0 1px rgba(80,55,150,.10);
+}
+.mapa-etiqueta{
+  position:absolute;right:1rem;top:1rem;z-index:2;
+  display:inline-flex;align-items:center;gap:.55rem;
+  padding:.6rem 1.05rem;border-radius:99px;font-size:.82rem;font-weight:500;
+  background:rgba(252,250,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:0 2px 6px rgba(45,30,80,.10),0 10px 26px rgba(45,30,80,.10);
+}
+.mapa-etiqueta svg{width:1rem;height:1rem;stroke:var(--g1);flex:none}
+.endereco{margin-top:1.6rem;border-top:1px solid var(--linha);padding-top:1.4rem;display:grid;gap:.95rem;align-content:start}
+.endereco div{display:grid;grid-template-columns:6.5rem 1fr;gap:.9rem;align-items:baseline}
+.endereco em{font-style:normal;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--g1);font-weight:600}
+.endereco span{font-size:.98rem;line-height:1.45}
+.mapa{
+  align-self:flex-start;display:inline-flex;align-items:center;gap:.5rem;margin-top:auto;padding-top:1.75rem;
+  font-size:.85rem;font-weight:500;color:var(--g1);
+  transition:gap .25s;
+}
+.mapa span{border-bottom:1px solid rgba(109,79,199,.32);padding-bottom:.15rem;transition:border-color .25s}
+.mapa:hover{gap:.8rem}
+.mapa:hover span{border-color:var(--g1)}
+.mapa svg{width:1rem;height:1rem}
+
+/* ——— cta + formulário ——— */
+.cta{position:relative;overflow:hidden}
+.cta h2{margin:0 auto;max-width:15ch}
+.form{
+  position:relative;z-index:2;text-align:left;
+  margin:clamp(2.5rem,5vw,3.75rem) auto 0;max-width:58rem;
+  background:var(--surface);border-radius:2rem;
+  padding:clamp(1.4rem,3vw,2.75rem);
+  box-shadow:var(--sombra1),0 20px 60px rgba(45,30,80,.09);
+  display:grid;grid-template-columns:1fr 1fr;gap:1.15rem 1.25rem;
+}
+.campo{display:flex;flex-direction:column;gap:.55rem;min-width:0}
+.campo.largo{grid-column:1/-1}
+.rot{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.rot i{font-style:normal;color:var(--g1)}
+.form input,.form select,.form textarea{
+  font:inherit;font-size:.95rem;color:var(--ink);background:var(--bg);width:100%;
+  border:1px solid var(--linha);border-radius:.9rem;padding:.85rem 1rem;
+  transition:border-color .25s,box-shadow .25s,background .25s;
+}
+.form input::placeholder,.form textarea::placeholder{color:#9A93AD}
+.form input:focus,.form select:focus,.form textarea:focus{
+  outline:0;border-color:var(--g1);background:var(--surface);box-shadow:0 0 0 4px rgba(109,79,199,.13);
+}
+.form textarea{resize:vertical;min-height:6.5rem;line-height:1.55}
+.form select{
+  appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:2.6rem;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23665E80' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 1rem center;background-size:1.05rem;
+}
+.chips{position:relative;display:flex;flex-wrap:wrap;gap:.5rem}
+.chips input{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.chips label{
+  cursor:pointer;user-select:none;padding:.62rem 1.05rem;border-radius:99px;
+  font-size:.88rem;line-height:1;color:var(--mute);
+  background:var(--bg);border:1px solid var(--linha);
+  transition:background .22s,color .22s,border-color .22s,transform .22s;
+}
+.chips label:hover{border-color:rgba(109,79,199,.4);color:var(--ink)}
+.chips input:checked + label{
+  background:linear-gradient(96deg,var(--g1),var(--g2));color:#fff;border-color:transparent;
+  box-shadow:0 6px 18px rgba(109,79,199,.26);
+}
+.chips input:focus-visible + label{box-shadow:0 0 0 4px rgba(109,79,199,.18)}
+.envio{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:1rem;justify-content:space-between;margin-top:.35rem}
+.envio .nota{font-size:.8rem;color:var(--mute);max-width:34ch;line-height:1.45}
+.btn-envio{background:linear-gradient(96deg,var(--g1),var(--g2));color:#fff}
+.btn-envio:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(109,79,199,.32)}
+.obrigado{
+  display:none;position:relative;z-index:2;text-align:center;
+  margin:clamp(2.5rem,5vw,3.75rem) auto 0;max-width:38rem;
+  background:var(--surface);border-radius:2rem;padding:clamp(2rem,4vw,3rem);
+  box-shadow:var(--sombra1),0 20px 60px rgba(45,30,80,.09);
+}
+.obrigado.on{display:block;animation:sobe .6s cubic-bezier(.2,.7,.3,1) both}
+@keyframes sobe{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.obrigado .selo{
+  width:3.25rem;height:3.25rem;border-radius:50%;margin:0 auto 1.25rem;
+  background:linear-gradient(96deg,var(--g1),var(--g2));display:grid;place-items:center;
+}
+.obrigado .selo svg{width:1.5rem;height:1.5rem;stroke:#fff}
+.obrigado h3{font-family:var(--disp);font-weight:500;font-size:clamp(1.5rem,2.6vw,2.1rem);letter-spacing:-.03em;line-height:1.1}
+.obrigado p{color:var(--mute);margin-top:.9rem;font-size:.98rem}
+.obrigado a.re{display:inline-block;margin-top:1.5rem}
 
 /* barra fixa */
 .barra{
   position:fixed;left:50%;bottom:1.25rem;transform:translate(-50%,150%);z-index:70;
   display:flex;align-items:center;gap:.9rem;padding:.5rem .5rem .5rem 1.35rem;border-radius:99px;
-  background:rgba(20,24,26,.92);backdrop-filter:blur(14px);color:#fff;
-  box-shadow:0 14px 44px rgba(20,24,26,.3);transition:transform .5s cubic-bezier(.2,.8,.3,1);
+  background:rgba(28,22,51,.93);backdrop-filter:blur(14px);color:#fff;
+  box-shadow:0 14px 44px rgba(45,25,90,.32);transition:transform .5s cubic-bezier(.2,.8,.3,1);
   font-size:.88rem;white-space:nowrap;max-width:calc(100vw - 2rem);
 }
 .barra.on{transform:translate(-50%,0)}
-.barra a{display:inline-flex;align-items:center;gap:.5rem;background:var(--g1);color:#fff;padding:.65rem 1.15rem;border-radius:99px;font-weight:500}
+.barra a{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(96deg,var(--g1),var(--g2));color:#fff;padding:.65rem 1.15rem;border-radius:99px;font-weight:500}
 .barra a svg{width:1rem;height:1rem}
 
 footer{
@@ -228,7 +335,7 @@ footer{
   .retrato{max-width:22rem}
 }
 @media (max-width:760px){
-  .cards,.onde{grid-template-columns:1fr}
+  .cards,.onde,.form{grid-template-columns:1fr}
   .faixa-grid{grid-template-columns:1fr 1fr;gap:.6rem}
   .painel:nth-child(3){display:none}
   h1{font-size:clamp(2.5rem,10vw,3.6rem)}
@@ -239,6 +346,13 @@ footer{
   .hero .disco:nth-of-type(n+5){display:none}
   .hero::before{opacity:.8}
   .formacao div{max-width:none}
+  .endereco div{grid-template-columns:1fr;gap:.2rem}
+  .mapa-cartao{aspect-ratio:4/3.6}
+  .mapa-etiqueta{left:.75rem;right:.75rem;top:.75rem;justify-content:center;font-size:.76rem;padding:.55rem .8rem}
+  .mapa{padding-top:1.35rem}
+  .envio{flex-direction:column;align-items:stretch}
+  .envio .btn{justify-content:center;max-width:none}
+  .envio .nota{max-width:none;order:2}
 }
 @media (prefers-reduced-motion:reduce){
   .rev{opacity:1;transform:none;transition:none}
@@ -263,13 +377,13 @@ footer{
 <header class="hero wrap">
   <div class="palco" id="palco">
     <div class="disco" data-d="0.6" style="width:15rem;height:15rem;top:8%;left:-5%"></div>
-    <div class="disco verde" data-d="1.1" style="width:9.5rem;height:9.5rem;top:16%;right:9%"></div>
-    <div class="disco escuro" data-d="0.35" style="width:24rem;height:24rem;bottom:-14%;right:-9%;filter:blur(2px)"></div>
-    <div class="disco azul" data-d="1.5" style="width:7rem;height:7rem;bottom:24%;left:13%"></div>
+    <div class="disco lilas" data-d="1.1" style="width:9.5rem;height:9.5rem;top:16%;right:9%"></div>
+    <div class="disco ametista" data-d="0.35" style="width:24rem;height:24rem;bottom:-14%;right:-9%;filter:blur(2px)"></div>
+    <div class="disco iris" data-d="1.5" style="width:7rem;height:7rem;bottom:24%;left:13%"></div>
     <div class="disco" data-d="0.85" style="width:11.5rem;height:11.5rem;top:54%;left:-3%;filter:blur(1px)"></div>
-    <div class="disco verde" data-d="0.5" style="width:18rem;height:18rem;top:-9%;right:23%;filter:blur(3px);opacity:.8"></div>
+    <div class="disco lilas" data-d="0.5" style="width:18rem;height:18rem;top:-9%;right:23%;filter:blur(3px);opacity:.8"></div>
     <div class="disco" data-d="1.25" style="width:5.5rem;height:5.5rem;top:30%;right:1%"></div>
-    <div class="disco escuro" data-d="0.75" style="width:8rem;height:8rem;bottom:4%;left:40%;filter:blur(2px);opacity:.45"></div>
+    <div class="disco ametista" data-d="0.75" style="width:8rem;height:8rem;bottom:4%;left:40%;filter:blur(2px);opacity:.45"></div>
   </div>
 
   <h1>Cada aluno trava<br><span class="grad">num lugar diferente</span></h1>
@@ -298,8 +412,8 @@ footer{
       <div class="card-topo"><i></i> 1º ao 5º ano</div>
       <div>
         <h3>Fundamental 1</h3>
-        <p>Todas as disciplinas, incluindo Inglês. A etapa da alfabetização, da leitura fluente e da base que sustenta tudo que vem depois.</p>
-        <div class="tags"><span>Alfabetização</span><span>Leitura</span><span>Inglês</span><span>Todas as matérias</span></div>
+        <p>A etapa da alfabetização, da leitura fluente e da base que sustenta tudo que vem depois. Acompanho o conteúdo do ano inteiro, matéria por matéria.</p>
+        <div class="tags"><span>Português</span><span>Matemática</span><span>História e Geografia</span><span>Ciências</span><span>Inglês</span></div>
       </div>
     </div>
 
@@ -316,7 +430,7 @@ footer{
       <div class="card-topo"><i></i> 1ª à 3ª série</div>
       <div>
         <h3>Ensino Médio</h3>
-        <p>Português e Redação com foco no ENEM e nos principais vestibulares do país.</p>
+        <p>Português e Produção Textual com foco no ENEM e nos principais vestibulares do país.</p>
         <div class="tags"><span>ENEM</span><span>Redação</span><span>Ciências Médicas</span><span>PUC Minas</span><span>FUVEST</span></div>
       </div>
     </div>
@@ -326,7 +440,7 @@ footer{
       <div>
         <h3>Psicopedagogia</h3>
         <p>Para estudantes com dificuldades de aprendizagem e transtornos do neurodesenvolvimento, com estratégias fundamentadas na Neuroeducação.</p>
-        <div class="tags"><span>TEA</span><span>TDAH</span><span>Dislexia</span><span>Deficiência intelectual</span><span>Neuroeducação</span></div>
+        <div class="tags"><span>TEA</span><span>TDAH</span><span>Dislexia</span><span>Habilidades cognitivas</span><span>Neuroeducação</span></div>
       </div>
     </div>
   </div>
@@ -351,7 +465,7 @@ footer{
       <h2 class="rev">A mesma pergunta atravessa todas as minhas aulas</h2>
       <p class="rev" style="margin-top:1.5rem"><strong>Por que esse aluno, especificamente esse, não está conseguindo?</strong></p>
       <p class="rev">Sou formada em Letras e em Pedagogia pela UFMG, onde também fiz o mestrado em Estudos Linguísticos. Depois vieram as especializações em Metodologias Ativas e em Psicopedagogia, e foi ali que o meu trabalho mudou de lugar. Deixei de olhar só para o conteúdo que precisava ser ensinado e passei a olhar para o caminho que cada estudante faz até chegar nele.</p>
-      <p class="rev">Antes de repetir a matéria mais devagar, eu procuro entender onde a dificuldade mora, se está na leitura, na organização dos estudos, na confiança ou no jeito como aquele assunto foi apresentado pela primeira vez. Quando isso fica claro, o resto anda.</p>
+      <p class="rev">Antes de retomar ou reforçar um conteúdo, eu investigo os fatores que estão interferindo no processo de aprendizagem: se está na leitura, na organização dos estudos, na confiança ou no jeito como aquele assunto foi apresentado pela primeira vez. É essa análise que revela a origem da dificuldade e sustenta as estratégias escolhidas dali em diante. Quando isso fica claro, o resto anda.</p>
     </div>
   </div>
 </section>
@@ -369,26 +483,138 @@ footer{
 <section class="wrap" id="onde">
   <h2 class="centro rev">Onde acontece</h2>
   <div class="onde">
-    <div class="rev">
+    <div class="bloco rev">
       <h3>Nova Suíça, Belo Horizonte</h3>
       <p>Atendimento presencial em sala preparada para o trabalho individual, com o material e a tranquilidade que a aula pede.</p>
+      <div class="endereco">
+        <div><em>Endereço</em><span>Rua Maria Macedo, 233 · sala 609</span></div>
+        <div><em>Bairro</em><span>Nova Suíça</span></div>
+        <div><em>Referência</em><span>Próximo ao Sebrae</span></div>
+      </div>
+      <a class="mapa" href="https://www.google.com/maps/dir/?api=1&amp;destination=Rua+Maria+Macedo+233+Nova+Su%C3%AD%C3%A7a+Belo+Horizonte+MG" target="_blank" rel="noopener"><span>Traçar rota até a sala</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H8M17 7v9"/></svg>
+      </a>
     </div>
-    <div class="rev">
+
+    <div class="bloco rev">
       <h3>Atendimento domiciliar</h3>
       <p>Para famílias que preferem receber em casa, mediante consulta de disponibilidade de agenda e valores.</p>
+      <a class="mapa" href="#contato"><span>Consultar agenda e valores</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="mapa-cartao rev">
+      <iframe
+        title="Mapa da sala de atendimento na Rua Maria Macedo, 233, Belo Horizonte"
+        src="https://maps.google.com/maps?q=Rua%20Maria%20Macedo%2C%20233%20-%20Nova%20Su%C3%AD%C3%A7a%2C%20Belo%20Horizonte%20-%20MG&amp;hl=pt-BR&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+        referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <span class="mapa-etiqueta">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Próximo ao Sebrae
+      </span>
     </div>
   </div>
 </section>
 
 <section class="cta wrap" id="contato">
   <div class="palco">
-    <div class="disco verde" data-d="0.7" style="width:13rem;height:13rem;top:8%;left:4%;filter:blur(2px);opacity:.8"></div>
-    <div class="disco azul" data-d="1.2" style="width:8rem;height:8rem;bottom:12%;right:8%"></div>
+    <div class="disco lilas" data-d="0.7" style="width:13rem;height:13rem;top:8%;left:4%;filter:blur(2px);opacity:.8"></div>
+    <div class="disco iris" data-d="1.2" style="width:8rem;height:8rem;bottom:12%;right:8%"></div>
   </div>
   <h2 class="centro rev" style="position:relative;z-index:2">A primeira conversa é sobre o aluno</h2>
-  <p class="intro centro rev" style="position:relative;z-index:2">Me conte o que está acontecendo e a gente vê junto qual é o melhor caminho. Sem compromisso nenhum.</p>
-  <div class="acoes rev" style="position:relative;z-index:2">
-    <a class="btn btn-escuro" href="https://wa.me/5531900000000" target="_blank" rel="noopener">Falar no WhatsApp
+  <p class="intro centro rev" style="position:relative;z-index:2">Me conte o que está acontecendo. Nessa primeira conversa eu entendo o caso, esclareço as suas dúvidas e a gente define o melhor caminho antes de falar em horário ou valor.</p>
+
+  <form class="form rev" id="form">
+    <div class="campo">
+      <label class="rot" for="f-resp">Seu nome <i>*</i></label>
+      <input id="f-resp" name="resp" required autocomplete="name" placeholder="Quem está entrando em contato">
+    </div>
+    <div class="campo">
+      <label class="rot" for="f-fone">WhatsApp <i>*</i></label>
+      <input id="f-fone" name="fone" type="tel" required autocomplete="tel" placeholder="(31) 9 0000-0000">
+    </div>
+
+    <div class="campo">
+      <label class="rot" for="f-aluno">Nome e idade do aluno</label>
+      <input id="f-aluno" name="aluno" placeholder="Ex: Pedro, 9 anos">
+    </div>
+    <div class="campo">
+      <label class="rot" for="f-ano">Ano escolar</label>
+      <select id="f-ano" name="ano">
+        <option value="">Selecione</option>
+        <option>1º ao 5º ano (Fundamental 1)</option>
+        <option>6º ao 9º ano (Fundamental 2)</option>
+        <option>Ensino Médio</option>
+        <option>Pré-vestibular ou ENEM</option>
+        <option>Outro</option>
+      </select>
+    </div>
+
+    <div class="campo largo">
+      <span class="rot">O que você procura</span>
+      <div class="chips">
+        <input type="checkbox" id="b1" name="busca" value="Reforço escolar"><label for="b1">Reforço escolar</label>
+        <input type="checkbox" id="b2" name="busca" value="Acompanhamento psicopedagógico"><label for="b2">Acompanhamento psicopedagógico</label>
+        <input type="checkbox" id="b3" name="busca" value="Preparação para ENEM e vestibular"><label for="b3">ENEM e vestibular</label>
+        <input type="checkbox" id="b4" name="busca" value="Redação"><label for="b4">Redação</label>
+        <input type="checkbox" id="b5" name="busca" value="Ainda não sei"><label for="b5">Ainda não sei</label>
+      </div>
+    </div>
+
+    <div class="campo largo">
+      <span class="rot">Matérias com mais dificuldade</span>
+      <div class="chips">
+        <input type="checkbox" id="m1" name="materia" value="Português"><label for="m1">Português</label>
+        <input type="checkbox" id="m2" name="materia" value="Matemática"><label for="m2">Matemática</label>
+        <input type="checkbox" id="m3" name="materia" value="História e Geografia"><label for="m3">História e Geografia</label>
+        <input type="checkbox" id="m4" name="materia" value="Ciências"><label for="m4">Ciências</label>
+        <input type="checkbox" id="m5" name="materia" value="Inglês"><label for="m5">Inglês</label>
+        <input type="checkbox" id="m6" name="materia" value="Redação"><label for="m6">Redação</label>
+        <input type="checkbox" id="m7" name="materia" value="Não sei dizer"><label for="m7">Não sei dizer</label>
+      </div>
+    </div>
+
+    <div class="campo largo">
+      <span class="rot">Como você prefere as aulas</span>
+      <div class="chips">
+        <input type="radio" id="f1" name="formato" value="Presencial na Nova Suíça"><label for="f1">Presencial na Nova Suíça</label>
+        <input type="radio" id="f2" name="formato" value="Domiciliar"><label for="f2">Em casa</label>
+        <input type="radio" id="f3" name="formato" value="A combinar"><label for="f3">A combinar</label>
+      </div>
+    </div>
+
+    <div class="campo largo">
+      <label class="rot" for="f-laudo">Já existe alguma avaliação ou laudo?</label>
+      <select id="f-laudo" name="laudo">
+        <option value="">Selecione</option>
+        <option>Sim, já temos</option>
+        <option>Está em processo</option>
+        <option>Não</option>
+        <option>Prefiro conversar sobre isso</option>
+      </select>
+    </div>
+
+    <div class="campo largo">
+      <label class="rot" for="f-msg">Conte um pouco do que está acontecendo</label>
+      <textarea id="f-msg" name="msg" placeholder="O que você percebeu, o que a escola falou, o que já tentaram até agora."></textarea>
+    </div>
+
+    <div class="envio">
+      <p class="nota">Você recebe uma resposta minha no WhatsApp para combinarmos a conversa.</p>
+      <button type="submit" class="btn btn-envio">Enviar
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </form>
+
+  <div class="obrigado" id="obrigado">
+    <div class="selo">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+    </div>
+    <h3>Recebi as suas informações</h3>
+    <p>Vou abrir o WhatsApp com tudo o que você preencheu. É só apertar enviar do outro lado e eu respondo em seguida.</p>
+    <a class="btn btn-escuro re" id="re-abrir" href="#" target="_blank" rel="noopener">Abrir o WhatsApp
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H8M17 7v9"/></svg>
     </a>
   </div>
@@ -446,6 +672,42 @@ const barra=document.getElementById('barra');
 addEventListener('scroll',()=>{
   barra.classList.toggle('on', scrollY>innerHeight*0.85);
 },{passive:true});
+
+/* ——— formulário ———
+   Trocar ZAP pelo número real quando a Isabela aprovar.
+   Sem back-end: o formulário monta a mensagem e abre o WhatsApp já preenchido. */
+const ZAP='5531900000000';
+const form=document.getElementById('form');
+const obrigado=document.getElementById('obrigado');
+
+form.addEventListener('submit',ev=>{
+  ev.preventDefault();
+  const v=n=>(form.elements[n]?.value||'').trim();
+  const marcados=n=>[...form.querySelectorAll(`input[name="${n}"]:checked`)].map(i=>i.value).join(', ');
+
+  const campos=[
+    ['Responsável', v('resp')],
+    ['WhatsApp', v('fone')],
+    ['Aluno', v('aluno')],
+    ['Ano escolar', v('ano')],
+    ['Procura por', marcados('busca')],
+    ['Matérias', marcados('materia')],
+    ['Formato', marcados('formato')],
+    ['Avaliação ou laudo', v('laudo')],
+    ['Situação', v('msg')]
+  ].filter(([,val])=>val);
+
+  const texto='Oi, Isabela! Preenchi o formulário do seu site.\n\n'
+    + campos.map(([k,val])=>`*${k}:* ${val}`).join('\n');
+
+  const url=`https://wa.me/${ZAP}?text=${encodeURIComponent(texto)}`;
+  document.getElementById('re-abrir').href=url;
+
+  form.style.display='none';
+  obrigado.classList.add('on');
+  obrigado.scrollIntoView({behavior:reduz?'auto':'smooth',block:'center'});
+  window.open(url,'_blank','noopener');
+});
 </script>
 </body>
 </html>
