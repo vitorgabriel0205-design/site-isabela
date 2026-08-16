@@ -342,6 +342,13 @@ h2{
 .cta h2{margin:0 auto;max-width:15ch}
 .cta .intro{color:#3E5148}
 .form{
+  /* o preenchimento é um degradê de canto: começa no verde da marca e termina no
+     azul, os dois no volume mais baixo. a seta do select vira token porque ela
+     precisa ser recolocada em cada estado que troca o background-image */
+  --preenche:linear-gradient(150deg,#EFF6F1 0%,#E8F0F7 100%);
+  --preenche-alta:linear-gradient(150deg,#E5F1E9 0%,#DBE9F5 100%);
+  --marcado:linear-gradient(96deg,#0F7A3A 0%,#0B7C72 52%,#0B5F9E 100%);
+  --seta:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232F4A3C' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   position:relative;z-index:2;text-align:left;
   margin:clamp(2.5rem,5vw,3.75rem) auto 0;max-width:58rem;
   background:var(--surface);border-radius:2rem;
@@ -354,35 +361,55 @@ h2{
 /* rótulo maior, mais escuro e menos espaçado: era 11,5px cinza claro */
 .rot{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#2F4A3C;font-weight:600}
 .rot i{font-style:normal;color:#0F7A3A}
+/* campo preenchido, não vazado: no cartão branco a borda clarinha sozinha sumia.
+   o fundo tingido desenha o balão e a borda fecha a silhueta (2,8:1 no cartão).
+   background-COLOR e não background: a forma curta apagava a seta do select */
 .form input,.form select,.form textarea{
-  font:inherit;font-size:1rem;color:var(--ink);background:#fff;width:100%;
-  border:1.5px solid #BFD2C7;border-radius:.9rem;padding:.9rem 1rem;
-  transition:border-color .25s,box-shadow .25s,background .25s;
+  font:inherit;font-size:1rem;color:var(--ink);width:100%;
+  background-color:#EDF4EF;background-image:var(--preenche);
+  border:1.5px solid #8FAC9C;border-radius:.9rem;padding:.9rem 1rem;
+  transition:border-color .25s,box-shadow .25s,background-color .25s;
 }
-.form input::placeholder,.form textarea::placeholder{color:#6E7A72}
+.form input::placeholder,.form textarea::placeholder{color:#55645B}
+.form input:hover,.form textarea:hover{border-color:#3D8C86;background-image:var(--preenche-alta)}
+/* o campo ativo é o único branco da tela: acende em vez de só ganhar contorno.
+   o foco é azul e a seleção é verde-pro-azul — assim "onde estou" e "o que
+   escolhi" não disputam a mesma cor */
 .form input:focus,.form select:focus,.form textarea:focus{
-  outline:0;border-color:#0F7A3A;background:#fff;box-shadow:0 0 0 4px rgba(15,122,58,.20);
+  outline:0;border-color:#0B5F9E;background-color:#fff;box-shadow:0 0 0 4px rgba(11,95,158,.22);
 }
+.form input:focus,.form textarea:focus{background-image:none}
 .form textarea{resize:vertical;min-height:6.5rem;line-height:1.55}
+/* seta e degradê empilhados na mesma propriedade: a seta é a camada de cima */
 .form select{
   appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:2.6rem;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235F6A64' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 1rem center;background-size:1.05rem;
+  background-image:var(--seta),var(--preenche);
+  background-repeat:no-repeat,no-repeat;
+  background-position:right 1rem center,0 0;
+  background-size:1.05rem,cover;
 }
+.form select:hover{border-color:#3D8C86;background-image:var(--seta),var(--preenche-alta)}
+.form select:focus{background-image:var(--seta)}
 .chips{position:relative;display:flex;flex-wrap:wrap;gap:.5rem}
 .chips input{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+/* mesmo tratamento dos campos, pra pílula não vazada ler como área clicável */
 .chips label{
   cursor:pointer;user-select:none;padding:.68rem 1.1rem;border-radius:99px;
-  font-size:.95rem;line-height:1;color:#33473D;
-  background:#fff;border:1.5px solid #BFD2C7;
-  transition:background .22s,color .22s,border-color .22s,transform .22s;
+  font-size:.95rem;line-height:1;color:#2B3D33;
+  background-color:#EDF4EF;background-image:var(--preenche);
+  border:1.5px solid #8FAC9C;
+  transition:color .22s,border-color .22s,box-shadow .22s,transform .22s;
 }
-.chips label:hover{border-color:#0F7A3A;color:var(--ink)}
+.chips label:hover{border-color:#3D8C86;background-image:var(--preenche-alta);color:var(--ink)}
+/* marcado carrega o degradê da marca inteiro: os três tons ficam escuros o
+   bastante pro branco em cima (5,1:1 no ponto mais claro, o teal do meio).
+   borda transparente pra cor não bater numa linha verde no lado azul */
 .chips input:checked + label{
-  background:#0F7A3A;color:#fff;border-color:#0F7A3A;font-weight:500;
-  box-shadow:0 4px 14px rgba(15,122,58,.30);
+  background-image:var(--marcado);color:#fff;border-color:transparent;font-weight:500;
+  box-shadow:0 6px 18px rgba(11,95,158,.28);
 }
-.chips input:focus-visible + label{box-shadow:0 0 0 4px rgba(15,122,58,.28)}
+.chips input:checked + label:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(11,95,158,.34)}
+.chips input:focus-visible + label{box-shadow:0 0 0 4px rgba(11,95,158,.30)}
 .envio{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:1rem;justify-content:space-between;margin-top:.35rem}
 .envio .nota{font-size:.92rem;color:#3E5148;max-width:36ch;line-height:1.5}
 .btn-envio{background:#0F7A3A;color:#fff;font-weight:600;padding:1.05rem 2rem}
