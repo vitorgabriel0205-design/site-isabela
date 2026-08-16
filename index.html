@@ -159,10 +159,12 @@ h2{
 .card:hover::before{transform:scale(1.06)}
 .c1::before{background:radial-gradient(120% 110% at 18% 8%,#4ADE80 0%,#16A34A 42%,#064E3B 100%)}
 .c2::before{background:radial-gradient(120% 110% at 82% 12%,#5EEAD4 0%,#0D9488 44%,#0F3D3A 100%)}
-.c3::before{background:radial-gradient(125% 115% at 25% 90%,#38BDF8 0%,#0369A1 45%,#082F49 100%)}
-/* índigo: o meio do caminho entre o roxo (#805292) e o azul (#001689) da
-   Bernoulli. fica na família do card azul de cima sem virar a mesma cor */
-.c4::before{background:radial-gradient(120% 110% at 78% 85%,#94A3FB 0%,#4338CA 46%,#191640 100%)}
+/* o azul saiu do cyan (201°) pro azul de verdade (207°) pra encurtar a distância
+   até o card ao lado — os quatro precisam ler como uma escala só */
+.c3::before{background:radial-gradient(125% 115% at 25% 90%,#4BB3F2 0%,#0A60A8 45%,#082F49 100%)}
+/* era índigo #4338CA: 44° de salto e claro demais, lia como roxo elétrico do lado
+   do azul. agora é azul-índigo (228°), 21° de diferença — vizinho, não outra cor */
+.c4::before{background:radial-gradient(120% 110% at 78% 85%,#8AA2EE 0%,#33489F 46%,#131B45 100%)}
 .card > *{position:relative;z-index:1}
 .card-topo{
   display:flex;align-items:center;gap:.65rem;
