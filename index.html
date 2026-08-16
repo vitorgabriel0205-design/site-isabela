@@ -159,13 +159,15 @@ h2{
 .card:hover::before{transform:scale(1.06)}
 .c1::before{background:radial-gradient(120% 110% at 18% 8%,#4ADE80 0%,#16A34A 42%,#064E3B 100%)}
 .c2::before{background:radial-gradient(120% 110% at 82% 12%,#5EEAD4 0%,#0D9488 44%,#0F3D3A 100%)}
-/* a linha de baixo é mais lavada que a de cima de propósito: o que fazia o card 4
-   gritar "roxo" era saturação, não matiz. azul empoeirado (211°, S 31%) */
-.c3::before{background:radial-gradient(125% 115% at 25% 90%,#8CB6D6 0%,#46709E 45%,#1C3350 100%)}
-/* lilás na mesma força do azul ao lado (242°, S 27%) — a 30° de distância, mas
-   com saturação baixa nos dois a diferença lê como troca de luz, não de cor.
-   já foi índigo #4338CA e azul-índigo #33489F, os dois reprovados por fortes */
-.c4::before{background:radial-gradient(120% 110% at 78% 85%,#ABA6DF 0%,#6866A8 46%,#26244C 100%)}
+/* azul-céu, vivo como os dois de cima (205°) */
+.c3::before{background:radial-gradient(125% 115% at 25% 90%,#40B4F2 0%,#0668B0 45%,#062B47 100%)}
+/* desistimos do violeta: índigo #4338CA, azul-índigo #33489F e lilás #6866A8 foram
+   reprovados, sempre pelo mesmo motivo. agora o par de baixo é um jogo dentro da
+   própria família — céu (205°) e royal (221°), 16° de distância. saturação alta
+   nos dois: baixar a saturação pra aproximar deixou tudo fosco e comeu o gradiente.
+   pra tirar a força do royal sem chapar, o caminho é escurecer (L 45% → 33%) e
+   segurar a saturação, não o contrário */
+.c4::before{background:radial-gradient(120% 110% at 78% 85%,#4F86DE 0%,#0B3A9E 46%,#071A3F 100%)}
 .card > *{position:relative;z-index:1}
 .card-topo{
   display:flex;align-items:center;gap:.65rem;
