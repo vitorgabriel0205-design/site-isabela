@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Isabela · Professora particular e psicopedagoga em Belo Horizonte</title>
+<title>Isabela Soares · Professora particular e psicopedagoga em Belo Horizonte</title>
 <meta name="description" content="Aulas particulares, reforço escolar e atendimento psicopedagógico em Belo Horizonte. Mestre em Estudos Linguísticos pela UFMG e especialista em Psicopedagogia.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -117,8 +117,12 @@ h1{
   padding:1.05rem 1.9rem;font-size:.95rem;
 }
 .btn-forte:hover{transform:translateY(-3px);box-shadow:0 18px 42px rgba(13,148,136,.34)}
-.btn-vazado{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(20,60,45,.20)}
-.btn-vazado:hover{transform:translateY(-3px);box-shadow:inset 0 0 0 1px rgba(20,60,45,.34);background:rgba(255,255,255,.5)}
+/* terceiro da capa: azul claro, pra ter cor sem competir com o principal */
+.btn-azul{
+  background:#DCEBFA;color:#0B3F63;
+  box-shadow:inset 0 0 0 1px rgba(3,105,161,.20),0 1px 3px rgba(20,24,26,.06);
+}
+.btn-azul:hover{transform:translateY(-3px);background:#CFE4F8;box-shadow:inset 0 0 0 1px rgba(3,105,161,.34),0 10px 24px rgba(3,105,161,.16)}
 
 .stats{
   position:relative;z-index:2;display:flex;flex-wrap:wrap;justify-content:center;
@@ -156,7 +160,9 @@ h2{
 .c1::before{background:radial-gradient(120% 110% at 18% 8%,#4ADE80 0%,#16A34A 42%,#064E3B 100%)}
 .c2::before{background:radial-gradient(120% 110% at 82% 12%,#5EEAD4 0%,#0D9488 44%,#0F3D3A 100%)}
 .c3::before{background:radial-gradient(125% 115% at 25% 90%,#38BDF8 0%,#0369A1 45%,#082F49 100%)}
-.c4::before{background:radial-gradient(120% 110% at 78% 85%,#C3B4FB 0%,#6F5DD8 46%,#2C2568 100%)}
+/* índigo: o meio do caminho entre o roxo (#805292) e o azul (#001689) da
+   Bernoulli. fica na família do card azul de cima sem virar a mesma cor */
+.c4::before{background:radial-gradient(120% 110% at 78% 85%,#94A3FB 0%,#4338CA 46%,#191640 100%)}
 .card > *{position:relative;z-index:1}
 .card-topo{
   display:flex;align-items:center;gap:.65rem;
@@ -173,94 +179,15 @@ h2{
 }
 
 /* ——— faixa da declaração ———
-   sem imagem: dois fios de largura total e as duas colunas nascendo
-   da mesma linha de topo. o encaixe é a grade, não um enfeite */
+   clara e sóbria: sem fundo escuro, sem efeito, sem animação.
+   duas colunas nascendo da mesma linha de topo e fechando na mesma base. */
 .faixa{
-  position:relative;overflow:hidden;background:#0A0C0B;color:#fff;
-  padding:clamp(5rem,10vw,8.5rem) var(--pad);
+  position:relative;background:var(--bg);color:var(--ink);
+  padding:clamp(4.5rem,9vw,7.5rem) var(--pad);
+  border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);
 }
-.faixa::before{
-  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:
-    radial-gradient(72% 95% at 6% -5%,rgba(6,64,46,.7),transparent 62%),
-    radial-gradient(66% 95% at 97% 104%,rgba(7,42,66,.75),transparent 64%);
-}
-/* devolve o escuro embaixo do texto: a cor fica nas bordas, o miolo respira */
-.faixa::after{
-  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:
-    radial-gradient(70% 118% at 44% 52%,rgba(5,9,8,.86) 0%,rgba(5,9,8,.58) 40%,rgba(5,9,8,.12) 72%,transparent 90%),
-    linear-gradient(180deg,rgba(5,9,8,.34),transparent 24%,transparent 76%,rgba(5,9,8,.34));
-}
-
-/* ——— bruma ———
-   sem nenhum filter: gradiente radial já nasce difuso, e `blur()` grande é o
-   que derrubava o quadro. só transform anima, que a GPU resolve sozinha */
-.bruma{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;contain:layout paint}
-.bruma span{position:absolute;display:block;border-radius:50%;will-change:transform}
-.n1{width:78vw;height:62vw;min-width:44rem;min-height:34rem;top:-46%;left:-24%;
-  background:radial-gradient(circle at 50% 50%,rgba(21,128,74,.62) 0%,rgba(17,104,64,.34) 26%,rgba(13,78,50,.14) 48%,transparent 70%)}
-.n2{width:74vw;height:58vw;min-width:40rem;min-height:32rem;bottom:-52%;right:-20%;
-  background:radial-gradient(circle at 50% 50%,rgba(15,95,146,.6) 0%,rgba(12,74,116,.32) 26%,rgba(9,50,80,.13) 48%,transparent 70%)}
-
-@keyframes deriva-a{
-  from{transform:translate3d(-3%,-2%,0) scale(1)}
-  to{transform:translate3d(6%,4%,0) scale(1.12)}
-}
-@keyframes deriva-b{
-  from{transform:translate3d(3%,2%,0) scale(1.1)}
-  to{transform:translate3d(-6%,-4%,0) scale(.96)}
-}
-
-/* ——— grão de filme: tira o banding do gradiente e dá textura ——— */
-.grao{
-  position:absolute;inset:0;z-index:3;pointer-events:none;opacity:.04;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23r)'/%3E%3C/svg%3E");
-}
-
-/* ——— rotas: as linhas entram espalhadas e convergem no mesmo ponto,
-   cada luz percorrendo a sua no próprio tempo ——— */
-.rotas{
-  position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;
-  /* apaga as rotas na faixa central pra não brigar com a leitura do texto */
-  -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 16%,rgba(0,0,0,.18) 40%,rgba(0,0,0,.18) 64%,#000 88%,#000 100%);
-  mask-image:linear-gradient(to bottom,#000 0,#000 16%,rgba(0,0,0,.18) 40%,rgba(0,0,0,.18) 64%,#000 88%,#000 100%);
-}
-.rotas path{fill:none;vector-effect:non-scaling-stroke}
-.trilhos path{stroke:rgba(255,255,255,.09);stroke-width:1}
-/* faíscas: povoam o escuro e piscam devagar, cada uma no seu ritmo.
-   são divs, não círculos no SVG: assim cada uma vira sua própria camada na GPU
-   em vez de obrigar o SVG inteiro a se redesenhar a cada quadro */
-.faiscas{position:absolute;inset:0;z-index:2;pointer-events:none;contain:layout paint}
-.faisca{position:absolute;border-radius:50%;opacity:.45;will-change:opacity,transform}
-.f-verde {background:radial-gradient(circle,rgba(134,239,172,.95) 0%,rgba(134,239,172,.3) 30%,rgba(134,239,172,0) 65%)}
-.f-agua  {background:radial-gradient(circle,rgba(94,234,212,.95) 0%,rgba(94,234,212,.3) 30%,rgba(94,234,212,0) 65%)}
-.f-ceu   {background:radial-gradient(circle,rgba(186,230,253,.95) 0%,rgba(186,230,253,.3) 30%,rgba(186,230,253,0) 65%)}
-.f-branco{background:radial-gradient(circle,rgba(233,255,248,.95) 0%,rgba(233,255,248,.3) 30%,rgba(233,255,248,0) 65%)}
-@keyframes cintila{
-  0%,100%{opacity:.14;transform:scale(.75)}
-  50%{opacity:.9;transform:scale(1.15)}
-}
-/* o brilho vinha de drop-shadow no grupo, que repintava tudo a cada quadro.
-   agora é só um traço um pouco mais grosso */
-.luz{
-  stroke-width:2.8;stroke-linecap:round;
-  stroke-dasharray:250 1400;stroke-dashoffset:0;
-}
-@keyframes percorre{to{stroke-dashoffset:1650}}
-/* opt-in: só anima pra quem não pediu movimento reduzido */
-@media (prefers-reduced-motion:no-preference){
-  .luz{animation:percorre var(--t,28s) ease-in-out var(--d,0s) infinite}
-  .faisca{animation:cintila var(--t,10s) ease-in-out var(--d,0s) infinite}
-  .n1{animation:deriva-a 46s ease-in-out -8s infinite alternate}
-  .n2{animation:deriva-b 61s ease-in-out -22s infinite alternate}
-}
-/* nada roda enquanto a faixa não está na tela */
-.faixa:not(.viva) .luz,
-.faixa:not(.viva) .faisca,
-.faixa:not(.viva) .bruma span{animation-play-state:paused}
 .declara{
-  position:relative;z-index:4;max-width:1500px;margin:0 auto;
+  position:relative;max-width:1500px;margin:0 auto;
   display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);
   gap:clamp(1.6rem,4vw,4rem);align-items:stretch;
 }
@@ -269,7 +196,7 @@ h2{
 .frase .l1{
   font-weight:400;line-height:1.06;
   font-size:clamp(1.35rem,3.4vw,3rem);
-  color:rgba(255,255,255,.44);
+  color:var(--mute);
 }
 .frase .l2{
   font-weight:500;line-height:.96;
@@ -281,7 +208,7 @@ h2{
 }
 .frase .l2 em{
   font-style:normal;
-  background:linear-gradient(96deg,#4ADE80,#5EEAD4 46%,#7DD3FC);
+  background:linear-gradient(96deg,var(--g1),var(--g2) 46%,var(--g3));
   -webkit-background-clip:text;background-clip:text;color:transparent;
   /* o letter-spacing negativo encolhia a caixa e comia a lateral do último "o" */
   padding-right:.09em;margin-right:-.09em;
@@ -292,19 +219,10 @@ h2{
   display:flex;flex-direction:column;justify-content:space-between;gap:1.1rem;
   max-width:30rem; /* trava a quebra: sem isso, em tela larga o texto perde uma
                       linha e o vão entre as frases dispara */
-  color:rgba(255,255,255,.66);
+  color:var(--mute);
   font-size:clamp(1.05rem,1.42vw,1.28rem);line-height:1.68;
   /* nada de margem negativa aqui: o stretch preenche a caixa de margem, então
      ela deixaria esta caixa mais alta que a da esquerda */
-}
-@media (max-width:860px){
-  .rotas .so-largo{display:none} /* menos rotas na tela estreita, senão vira ruído */
-  /* no mobile o texto ocupa quase toda a faixa, então a janela apagada é maior */
-  .rotas{
-    -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 7%,rgba(0,0,0,.1) 24%,rgba(0,0,0,.1) 78%,#000 95%,#000 100%);
-    mask-image:linear-gradient(to bottom,#000 0,#000 7%,rgba(0,0,0,.1) 24%,rgba(0,0,0,.1) 78%,#000 95%,#000 100%);
-  }
-  .luzes{opacity:.7}
 }
 @media (max-width:1170px){
   .declara{grid-template-columns:1fr;gap:0}
@@ -408,9 +326,16 @@ h2{
 .acao-leve:hover{box-shadow:inset 0 0 0 1px rgba(20,60,45,.28)}
 .acao-leve .seta{color:var(--mute)}
 
-/* ——— cta + formulário ——— */
-.cta{position:relative;overflow:hidden}
+/* ——— cta + formulário ———
+   contraste puxado pra cima nesta seção: é onde a pessoa precisa ler rótulo
+   pequeno e enxergar onde termina cada campo, muitas vezes de óculos */
+.cta{
+  position:relative;overflow:hidden;
+  background:linear-gradient(180deg,#E7F3EC 0%,#DFEFE9 48%,#E9F4EF 100%);
+  border-top:1px solid rgba(20,60,45,.10);
+}
 .cta h2{margin:0 auto;max-width:15ch}
+.cta .intro{color:#3E5148}
 .form{
   position:relative;z-index:2;text-align:left;
   margin:clamp(2.5rem,5vw,3.75rem) auto 0;max-width:58rem;
@@ -421,16 +346,17 @@ h2{
 }
 .campo{display:flex;flex-direction:column;gap:.55rem;min-width:0}
 .campo.largo{grid-column:1/-1}
-.rot{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--mute);font-weight:600}
-.rot i{font-style:normal;color:var(--g1)}
+/* rótulo maior, mais escuro e menos espaçado: era 11,5px cinza claro */
+.rot{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#2F4A3C;font-weight:600}
+.rot i{font-style:normal;color:#0F7A3A}
 .form input,.form select,.form textarea{
-  font:inherit;font-size:.95rem;color:var(--ink);background:var(--bg);width:100%;
-  border:1px solid var(--linha);border-radius:.9rem;padding:.85rem 1rem;
+  font:inherit;font-size:1rem;color:var(--ink);background:#fff;width:100%;
+  border:1.5px solid #BFD2C7;border-radius:.9rem;padding:.9rem 1rem;
   transition:border-color .25s,box-shadow .25s,background .25s;
 }
-.form input::placeholder,.form textarea::placeholder{color:#98A29B}
+.form input::placeholder,.form textarea::placeholder{color:#6E7A72}
 .form input:focus,.form select:focus,.form textarea:focus{
-  outline:0;border-color:var(--g1);background:var(--surface);box-shadow:0 0 0 4px rgba(22,163,74,.14);
+  outline:0;border-color:#0F7A3A;background:#fff;box-shadow:0 0 0 4px rgba(15,122,58,.20);
 }
 .form textarea{resize:vertical;min-height:6.5rem;line-height:1.55}
 .form select{
@@ -441,21 +367,21 @@ h2{
 .chips{position:relative;display:flex;flex-wrap:wrap;gap:.5rem}
 .chips input{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .chips label{
-  cursor:pointer;user-select:none;padding:.62rem 1.05rem;border-radius:99px;
-  font-size:.88rem;line-height:1;color:var(--mute);
-  background:var(--bg);border:1px solid var(--linha);
+  cursor:pointer;user-select:none;padding:.68rem 1.1rem;border-radius:99px;
+  font-size:.95rem;line-height:1;color:#33473D;
+  background:#fff;border:1.5px solid #BFD2C7;
   transition:background .22s,color .22s,border-color .22s,transform .22s;
 }
-.chips label:hover{border-color:rgba(20,60,45,.34);color:var(--ink)}
+.chips label:hover{border-color:#0F7A3A;color:var(--ink)}
 .chips input:checked + label{
-  background:linear-gradient(96deg,var(--g1),var(--g2));color:#fff;border-color:transparent;
-  box-shadow:0 6px 18px rgba(13,148,136,.26);
+  background:#0F7A3A;color:#fff;border-color:#0F7A3A;font-weight:500;
+  box-shadow:0 4px 14px rgba(15,122,58,.30);
 }
-.chips input:focus-visible + label{box-shadow:0 0 0 4px rgba(22,163,74,.18)}
+.chips input:focus-visible + label{box-shadow:0 0 0 4px rgba(15,122,58,.28)}
 .envio{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:1rem;justify-content:space-between;margin-top:.35rem}
-.envio .nota{font-size:.8rem;color:var(--mute);max-width:34ch;line-height:1.45}
-.btn-envio{background:linear-gradient(96deg,var(--g1),var(--g2));color:#fff}
-.btn-envio:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(13,148,136,.32)}
+.envio .nota{font-size:.92rem;color:#3E5148;max-width:36ch;line-height:1.5}
+.btn-envio{background:#0F7A3A;color:#fff;font-weight:600;padding:1.05rem 2rem}
+.btn-envio:hover{transform:translateY(-3px);background:#0C6831;box-shadow:0 14px 32px rgba(15,122,58,.34)}
 .obrigado{
   display:none;position:relative;z-index:2;text-align:center;
   margin:clamp(2.5rem,5vw,3.75rem) auto 0;max-width:38rem;
@@ -473,12 +399,19 @@ h2{
 .obrigado p{color:var(--mute);margin-top:.9rem;font-size:.98rem}
 .obrigado a.re{display:inline-block;margin-top:1.5rem}
 
-/* barra fixa */
+/* ——— pílula fixa ———
+   uma medida só pra todo lado: --folga é a distância entre a borda da pílula e
+   a borda do botão, igual em cima, embaixo e nos dois lados. o `space-between`
+   é o que gruda o botão na extremidade direita quando a pílula ocupa a largura
+   toda — sem ele os dois ficavam empilhados à esquerda e sobrava vão */
 .barra{
+  --folga:.4rem;
   position:fixed;left:50%;bottom:1.25rem;transform:translate(-50%,150%);z-index:70;
-  display:flex;align-items:center;gap:.9rem;padding:.5rem .5rem .5rem 1.35rem;border-radius:99px;
-  background:rgba(14,20,17,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff;
-  box-shadow:0 14px 44px rgba(10,20,15,.32);transition:transform .5s cubic-bezier(.2,.8,.3,1);
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:var(--folga) var(--folga) var(--folga) 1.35rem;border-radius:99px;
+  background:rgba(14,20,17,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  color:#fff;box-shadow:0 14px 44px rgba(10,20,15,.34);
+  transition:transform .5s cubic-bezier(.2,.8,.3,1);
   font-size:.88rem;max-width:calc(100vw - 2rem);
 }
 .barra.on{transform:translate(-50%,0)}
@@ -486,9 +419,14 @@ h2{
 .barra .curto{display:none}
 .barra a{
   display:inline-flex;align-items:center;gap:.5rem;flex:none;white-space:nowrap;
-  background:linear-gradient(96deg,var(--g1),var(--g2));color:#fff;
-  padding:.65rem 1.15rem;border-radius:99px;font-weight:500;
+  /* verde claro com texto escuro: 7:1 de contraste, e destaca muito mais na
+     pílula escura do que verde escuro com texto branco */
+  background:linear-gradient(96deg,#3EDC86,#2ECFA8);color:#06301A;
+  padding:.7rem 1.2rem;border-radius:99px;font-weight:600;font-size:.88rem;
+  box-shadow:0 2px 10px rgba(62,220,134,.35);
+  transition:filter .25s;
 }
+.barra a:hover{filter:brightness(1.08)}
 .barra a svg{width:1rem;height:1rem}
 
 footer{
@@ -513,16 +451,17 @@ footer{
   .acoes .btn{justify-content:center}
   /* em 320px o rótulo mais longo quebrava em duas linhas */
   .acoes .btn-forte{padding-left:1.25rem;padding-right:1.25rem}
-  /* a barra passava da tela: agora ela ancora nas duas bordas e o texto encolhe */
+  /* a pílula passava da tela: ancora nas duas bordas e o texto encolhe.
+     a --folga continua a mesma, então a proporção não muda de tela pra tela */
   .barra{
     left:.7rem;right:.7rem;bottom:.9rem;max-width:none;
     transform:translate(0,180%);
-    font-size:.78rem;padding:.4rem .4rem .4rem 1rem;gap:.5rem;
+    font-size:.8rem;padding:var(--folga) var(--folga) var(--folga) 1.05rem;gap:.6rem;
   }
   .barra.on{transform:translate(0,0)}
   .barra .longo{display:none}
   .barra .curto{display:inline}
-  .barra a{padding:.6rem .95rem;font-size:.8rem}
+  .barra a{padding:.65rem 1rem;font-size:.82rem}
   .logo b{display:none}
   .hero .disco{opacity:.4}
   .hero .disco:nth-of-type(n+5){display:none}
@@ -548,14 +487,14 @@ footer{
 <body>
 
 <nav>
-  <div class="logo">Isabela <b>· professora e psicopedagoga</b></div>
+  <div class="logo">Isabela Soares <b>· professora e psicopedagoga</b></div>
   <div class="pill-nav">
     <a href="#servicos">Serviços</a>
     <a href="#sobre">Quem sou</a>
     <a href="#formacao">Formação</a>
     <a href="#onde">Onde atendo</a>
   </div>
-  <a class="nav-cta" href="#contato">Falar no WhatsApp</a>
+  <a class="nav-cta" data-zap href="#contato">Falar no WhatsApp</a>
 </nav>
 
 <header class="hero wrap">
@@ -579,7 +518,7 @@ footer{
     <a class="btn btn-claro" href="#servicos">Ver o que eu faço
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </a>
-    <a class="btn btn-vazado" data-zap href="#contato">Falar no WhatsApp
+    <a class="btn btn-azul" data-zap href="#contato">Falar no WhatsApp
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H8M17 7v9"/></svg>
     </a>
   </div>
@@ -634,52 +573,6 @@ footer{
 </section>
 
 <div class="faixa">
-  <div class="bruma" aria-hidden="true">
-    <span class="n1"></span><span class="n2"></span>
-  </div>
-
-  <svg class="rotas" viewBox="0 0 1440 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-    <defs>
-      <linearGradient id="luz-verde"><stop offset="0" stop-color="#86EFAC" stop-opacity="0"/><stop offset=".5" stop-color="#86EFAC"/><stop offset="1" stop-color="#86EFAC" stop-opacity="0"/></linearGradient>
-      <linearGradient id="luz-agua"><stop offset="0" stop-color="#5EEAD4" stop-opacity="0"/><stop offset=".5" stop-color="#5EEAD4"/><stop offset="1" stop-color="#5EEAD4" stop-opacity="0"/></linearGradient>
-      <linearGradient id="luz-ceu"><stop offset="0" stop-color="#BAE6FD" stop-opacity="0"/><stop offset=".5" stop-color="#BAE6FD"/><stop offset="1" stop-color="#BAE6FD" stop-opacity="0"/></linearGradient>
-    </defs>
-
-
-    <g class="trilhos">
-      <path d="M-80,470 C 260,445 430,330 700,290 C 970,250 1200,190 1520,140"/>
-      <path d="M-80,330 C 210,335 400,240 660,205 C 920,170 1220,150 1520,110"/>
-      <path d="M-80,545 C 320,510 580,450 840,390 C 1100,330 1290,240 1520,175"/>
-      <path class="so-largo" d="M-80,195 C 280,192 470,150 770,125 C 1070,100 1260,95 1520,85"/>
-      <path class="so-largo" d="M-80,405 C 340,392 620,350 910,300 C 1200,250 1350,180 1520,130"/>
-    </g>
-
-    <g class="luzes">
-      <path class="luz" style="--t:21s;--d:-4s"  pathLength="1000" stroke="url(#luz-verde)" d="M-80,470 C 260,445 430,330 700,290 C 970,250 1200,190 1520,140"/>
-      <path class="luz" style="--t:29s;--d:-17s" pathLength="1000" stroke="url(#luz-agua)"  d="M-80,330 C 210,335 400,240 660,205 C 920,170 1220,150 1520,110"/>
-      <path class="luz" style="--t:37s;--d:-9s"  pathLength="1000" stroke="url(#luz-ceu)"   d="M-80,545 C 320,510 580,450 840,390 C 1100,330 1290,240 1520,175"/>
-      <path class="luz so-largo" style="--t:25s;--d:-22s" pathLength="1000" stroke="url(#luz-agua)"  d="M-80,195 C 280,192 470,150 770,125 C 1070,100 1260,95 1520,85"/>
-      <path class="luz so-largo" style="--t:43s;--d:-31s" pathLength="1000" stroke="url(#luz-verde)" d="M-80,405 C 340,392 620,350 910,300 C 1200,250 1350,180 1520,130"/>
-    </g>
-  </svg>
-
-  <div class="faiscas" aria-hidden="true">
-    <i class="faisca f-verde so-largo" style="left:4.4%;top:7.6%;width:25px;height:25px;--t:12.6s;--d:-3.5s"></i>
-    <i class="faisca f-branco" style="left:12.3%;top:88.1%;width:23px;height:23px;--t:9.7s;--d:-11.0s"></i>
-    <i class="faisca f-verde" style="left:19.6%;top:8.8%;width:17px;height:17px;--t:9.8s;--d:-1.2s"></i>
-    <i class="faisca f-verde so-largo" style="left:27.7%;top:74.3%;width:20px;height:20px;--t:14.9s;--d:-4.5s"></i>
-    <i class="faisca f-agua" style="left:37.0%;top:13.9%;width:13px;height:13px;--t:7.1s;--d:-5.0s"></i>
-    <i class="faisca f-ceu" style="left:43.3%;top:89.2%;width:23px;height:23px;--t:11.2s;--d:-11.0s"></i>
-    <i class="faisca f-branco so-largo" style="left:54.0%;top:8.8%;width:16px;height:16px;--t:14.5s;--d:-5.2s"></i>
-    <i class="faisca f-branco" style="left:58.8%;top:91.9%;width:18px;height:18px;--t:11.4s;--d:-7.6s"></i>
-    <i class="faisca f-verde" style="left:67.1%;top:24.7%;width:20px;height:20px;--t:12.8s;--d:-4.6s"></i>
-    <i class="faisca f-branco so-largo" style="left:79.6%;top:92.5%;width:25px;height:25px;--t:11.2s;--d:-6.5s"></i>
-    <i class="faisca f-agua" style="left:85.7%;top:14.1%;width:19px;height:19px;--t:8.4s;--d:-5.1s"></i>
-    <i class="faisca f-verde" style="left:92.7%;top:82.4%;width:13px;height:13px;--t:9.0s;--d:-11.7s"></i>
-  </div>
-
-  <div class="grao" aria-hidden="true"></div>
-
   <div class="declara">
     <h2 class="frase rev">
       <span class="l1">Aprender não é sobre esforço.</span>
@@ -776,7 +669,7 @@ footer{
     <div class="disco azul" data-d="1.2" style="width:8rem;height:8rem;bottom:12%;right:8%"></div>
   </div>
   <h2 class="centro rev" style="position:relative;z-index:2">A primeira conversa é sobre o aluno</h2>
-  <p class="intro centro rev" style="position:relative;z-index:2">Me conte o que está acontecendo. Nessa primeira conversa eu entendo o caso, esclareço as suas dúvidas e a gente vê horários, valores e o melhor caminho para o aluno.</p>
+  <p class="intro centro rev" style="position:relative;z-index:2">Me conte o que está acontecendo. Nesse primeiro contato, eu entendo o caso, esclareço as dúvidas e a gente vê horários, valores e a melhor estratégia.</p>
 
   <form class="form rev" id="form">
     <div class="campo">
@@ -884,13 +777,13 @@ footer{
 
 <div class="barra" id="barra">
   <span class="txt"><span class="longo">Aulas particulares e psicopedagogia em BH</span><span class="curto">Aulas e psicopedagogia em BH</span></span>
-  <a data-zap href="#contato">Falar agora
+  <a href="#contato">Falar agora
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
   </a>
 </div>
 
 <footer>
-  <span>Isabela · Professora particular e psicopedagoga</span>
+  <span>Isabela Soares · Professora particular e psicopedagoga</span>
   <span>Belo Horizonte, MG</span>
 </footer>
 
@@ -904,14 +797,6 @@ document.querySelectorAll('.rev').forEach((el,i)=>{
   el.style.transitionDelay=(i%3)*80+'ms';
   io.observe(el);
 });
-
-/* a faixa escura só anima enquanto está na tela */
-const faixa=document.querySelector('.faixa');
-if(faixa){
-  new IntersectionObserver(es=>{
-    es.forEach(e=>faixa.classList.toggle('viva', e.isIntersecting));
-  },{rootMargin:'15% 0px'}).observe(faixa);
-}
 
 if(!reduz){
   /* este laço rodava a cada quadro pra sempre, mesmo com a capa fora da tela
