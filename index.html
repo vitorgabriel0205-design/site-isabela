@@ -865,7 +865,9 @@ addEventListener('scroll',()=>{
    Único lugar pra trocar o número quando a Isabela passar o real.
    Todo link com [data-zap] é preenchido a partir daqui.
    Sem back-end: o formulário monta a mensagem e abre o WhatsApp já preenchido. */
-const ZAP='5531900000000';
+/* 55 + 31 + 9 8859-1635 — número de teste passado pelo Vitor em 17/08/2026.
+   O nono dígito entra aqui porque celular de MG só resolve no wa.me com ele. */
+const ZAP='5531988591635';
 document.querySelectorAll('[data-zap]').forEach(a=>{
   a.href='https://wa.me/'+ZAP;
   a.target='_blank';
