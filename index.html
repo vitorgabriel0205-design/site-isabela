@@ -191,21 +191,23 @@ h2{
   padding:clamp(4.5rem,9vw,7.5rem) var(--pad);
   border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);
 }
+/* a frase ficou sozinha na faixa: sem a coluna de apoio, ela ocupa a largura
+   inteira e o corpo cresce junto, senão sobra vão morto do lado direito */
 .declara{
   position:relative;max-width:1500px;margin:0 auto;
-  display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);
-  gap:clamp(1.6rem,4vw,4rem);align-items:stretch;
 }
 .frase{max-width:none;display:block}
 .frase .l1,.frase .l2{display:block;font-family:var(--disp);letter-spacing:-.045em}
 .frase .l1{
   font-weight:400;line-height:1.06;
-  font-size:clamp(1.35rem,3.4vw,3rem);
+  font-size:clamp(1.4rem,5.8vw,5.1rem);
   color:var(--mute);
 }
 .frase .l2{
   font-weight:500;line-height:.96;
-  font-size:clamp(2.4rem,7vw,6.4rem);
+  /* o vw manda até 1408px de tela: é ele que faz a linha fechar quase colada na
+     margem em qualquer largura, em vez de sobrar vão do lado direito */
+  font-size:clamp(2.4rem,12.5vw,11rem);
   margin-top:clamp(.35rem,.8vw,.7rem);
   /* line-height abaixo de 1 deixa a letra passar da caixa; sem isso a coluna
      da direita fecha acima da base real do texto */
@@ -217,25 +219,6 @@ h2{
   -webkit-background-clip:text;background-clip:text;color:transparent;
   /* o letter-spacing negativo encolhia a caixa e comia a lateral do último "o" */
   padding-right:.09em;margin-right:-.09em;
-}
-/* as duas frases se afastam até fechar a mesma altura do bloco da esquerda —
-   assim não depende do corpo da fonte cair certinho na quebra de linha */
-.apoio{
-  display:flex;flex-direction:column;justify-content:space-between;gap:1.1rem;
-  max-width:30rem; /* trava a quebra: sem isso, em tela larga o texto perde uma
-                      linha e o vão entre as frases dispara */
-  color:var(--mute);
-  font-size:clamp(1.05rem,1.42vw,1.28rem);line-height:1.68;
-  /* nada de margem negativa aqui: o stretch preenche a caixa de margem, então
-     ela deixaria esta caixa mais alta que a da esquerda */
-}
-@media (max-width:1170px){
-  .declara{grid-template-columns:1fr;gap:0}
-  .apoio{
-    display:block;margin-top:clamp(1.5rem,3vw,2.2rem);max-width:46ch;
-    font-size:clamp(1rem,1.15vw,1.12rem);line-height:1.62;
-  }
-  .apoio p + p{margin-top:.85em}
 }
 
 /* ——— sobre ——— */
@@ -610,10 +593,6 @@ footer{
       <span class="l1">Aprender não é sobre esforço.</span>
       <span class="l2">É sobre <em>caminho</em>.</span>
     </h2>
-    <div class="apoio rev">
-      <p>Dois alunos com a mesma nota podem estar travados por motivos completamente diferentes.</p>
-      <p>Descobrir qual é o motivo muda tudo que vem depois.</p>
-    </div>
   </div>
 </div>
 
@@ -701,7 +680,7 @@ footer{
     <div class="disco azul" data-d="1.2" style="width:8rem;height:8rem;bottom:12%;right:8%"></div>
   </div>
   <h2 class="centro rev" style="position:relative;z-index:2">A primeira conversa é sobre o aluno</h2>
-  <p class="intro centro rev" style="position:relative;z-index:2">Me conte o que está acontecendo. Nesse primeiro contato, eu entendo o caso, esclareço as dúvidas e a gente vê horários, valores e a melhor estratégia.</p>
+  <p class="intro centro rev" style="position:relative;z-index:2">Me conte o que está acontecendo. Nesse primeiro contato, eu entendo o caso, esclareço as dúvidas e a gente vê horários, valores e o melhor caminho.</p>
 
   <form class="form rev" id="form">
     <div class="campo">
