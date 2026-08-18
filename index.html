@@ -225,11 +225,11 @@ h2{
 .sobre{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,5rem);align-items:center}
 .retrato{
   aspect-ratio:4/5;border-radius:1.75rem;position:relative;overflow:hidden;
+  /* o degradê fica de fundo enquanto a foto carrega, senão pisca um vão branco */
   background:radial-gradient(130% 110% at 20% 10%,#E9F7F0,#D3E4DB 55%,#BDD2C7);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:inset 0 0 0 1px rgba(20,60,40,.08);
 }
-.retrato span{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);text-align:center;line-height:2}
+/* sem anel inset aqui: com a foto preenchendo, a linha vira moldura */
+.retrato img{width:100%;height:100%;object-fit:cover;display:block}
 .sobre-txt p{color:var(--mute);max-width:56ch;font-size:clamp(1rem,1.15vw,1.1rem)}
 .sobre-txt p + p{margin-top:1.15rem}
 .sobre-txt p strong{color:var(--ink);font-weight:500}
@@ -598,7 +598,10 @@ footer{
 
 <section class="wrap" id="sobre">
   <div class="sobre">
-    <div class="retrato rev"><span>retrato<br>espaço reservado</span></div>
+    <div class="retrato rev">
+      <img src="img/isabela.jpg" width="1100" height="1375" loading="lazy" decoding="async"
+           alt="Isabela Soares, professora particular e psicopedagoga em Belo Horizonte">
+    </div>
     <div class="sobre-txt">
       <h2 class="rev">A mesma pergunta atravessa todas as minhas aulas</h2>
       <p class="rev" style="margin-top:1.5rem"><strong>Por que esse aluno, especificamente esse, não está conseguindo?</strong></p>
